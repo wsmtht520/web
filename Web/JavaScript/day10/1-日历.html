@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器练习：日历</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+
+		#box{
+			width: 500px;
+			height: 500px;
+			margin:80px auto;
+			background-color: orange;
+			border:1px solid #fff;
+			padding:20px;
+			box-sizing: border-box;
+		}
+
+		#box #top{
+			font-size: 22px;
+			color:blue;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+
+		#box #content{
+			width: 300px;
+			height: 300px;
+			font-size: 60px;
+			background-color: red;
+			margin:0 auto;
+			text-align: center;
+			line-height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="top">2018年5月14日 星期一</div>
+		<div id="content">12</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1.获取到需要的标签
+			var top = document.getElementById("top");
+			var content = document.getElementById("content");
+
+			// 2.获取到日期对象
+			var date = new Date();
+			var y = date.getFullYear();
+			var m = date.getMonth();
+			var d = date.getDate();
+			var weeks = date.getDay();
+			var arrayWeek = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"];
+			top.innerText = y +"年"+ m+"月" + d+"日"+"  " + arrayWeek[weeks];
+			content.innerText = d;
+		}
+	</script>
+</body>
+</html>

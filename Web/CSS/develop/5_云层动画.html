@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation动画练习:云层动画</title>
+	<style type="text/css"></style>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+
+		ul{
+			list-style-type: none;
+			height: 400px;
+			background-color: skyblue;
+			border:1px solid #000;
+			margin-top: 100px;
+			position: relative;
+			animation:change 5s linear 0s infinite alternate;
+			overflow: hidden;
+		}
+
+		ul li{
+			width: 400%;
+			height: 400px;
+			/*background-color: red;*/
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+
+		ul li:nth-child(1){
+			background-image: url(images2/cloud_one.png);
+			animation:one 20s linear 0s infinite alternate ;
+		}
+		ul li:nth-child(2){
+			background-image: url(images2/cloud_two.png);
+			animation:two 20s linear 0s infinite alternate ;
+		}
+		ul li:nth-child(3){
+			background-image: url(images2/cloud_three.png);
+			animation:three 20s linear 0s infinite alternate ;
+		}
+
+		@keyframes change{
+			from{
+				background-color: skyblue;
+			}
+			to{
+				background-color: black;
+			}
+		}
+
+		@keyframes one{
+			form{
+				margin-left: 0;
+			}
+			to{
+				margin-left: -100%;
+			}
+		}
+		@keyframes two{
+			form{
+				margin-left: 0;
+			}
+			to{
+				margin-left: -200%;
+			}
+		}
+		@keyframes three{
+			form{
+				margin-left: 0;
+			}
+			to{
+				margin-left: -300%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

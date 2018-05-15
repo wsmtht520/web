@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器应用:图片滚动</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		body{
+			background-color: black;
+		}
+		#box{
+			width: 750px;
+			height: 400px;
+			margin:80px auto;
+			border:1px solid red;
+			overflow: hidden;
+			position: relative;
+		}
+
+		#pic{
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+
+		#top,#bottom{
+			position: absolute;
+			width: 750px;
+			height: 200px;
+			cursor: pointer;
+			/*background-color: red;*/
+			
+		}
+		#top{
+			top: 0;
+			left: 0;
+		}
+
+		#bottom{
+			top:200px;
+			left: 0;
+			/*background-color: blue;*/
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="images/timg.jpg" alt="" id="pic">
+		<span id="top"></span>
+		<span id="bottom"></span>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 设置变量
+			var timer = null,long = 0;
+			
+			// 2. 监听鼠标移入事件
+			$("top").onmouseover = function () {
+				// 2.1 清除定时器
+				clearInterval(timer);
+
+				// 2.2 设置定时器
+				timer = setInterval(function () {
+					// 设置步伐长度
+					long -= 50;
+
+					// 判断
+					if(long >= -2466){
+						$("pic").style.top = long+"px";
+					}else{
+						clearInterval(timer);
+					}
+					
+				}, 100)
+			};
+
+			$("bottom").onmouseover = function () {
+				// 2.1 清除定时器
+				clearInterval(timer);
+
+				// 2.2 设置定时器
+				timer = setInterval(function () {
+					// 设置步伐长度
+					long += 50;
+
+					// 判断
+					if(long <= 0){
+						$("pic").style.top = long+"px";
+					}else{
+						clearInterval(timer);
+					}
+					
+				}, 100)
+			};
+
+			// 3. 监听鼠标移出盒子事件
+			$("box").onmouseout = function () {
+				clearInterval(timer);
+			}
+		};
+
+		function $(id){
+			return typeof id === "string" ? document.getElementById(id):null;
+		}
+	</script>
+</body>
+</html>

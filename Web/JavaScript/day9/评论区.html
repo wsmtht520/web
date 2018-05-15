@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微博评论区</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+
+		ul,li{list-style-type: none}
+
+		a{
+			text-decoration: none;
+			color: red;
+			font-size: 14px;
+		}
+
+		.box{
+			width: 800px;
+			margin:80px auto;
+			padding:20px;
+			border:1px solid #c0c0c0;
+		}
+
+		.top #text{
+			width: 80%;
+			height: 80px;
+		}
+		
+		.bottom>ul{
+			margin:0 80px;
+		}
+		.bottom>ul>li{
+			border-bottom: 1px dashed black;
+			line-height: 16px;
+			padding:10px 0;
+			color: blue;
+		}
+
+		.bottom>ul>li>a{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<label for="text">发表评论：</label>
+			<textarea rows="6" cols="60" id="text"></textarea>
+			<button id="btn">提交</button>
+		</div>
+		<hr>
+		<div class="bottom">
+			<h3 style="font-size: 16px;font-weight: normal;">评论区留言:</h3>
+			<ul id="ul">
+				<!-- <li>你好啊<a href="">删除</a></li> -->
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			$("btn").onclick = function () {
+				// 1.获取文本输入框中的值
+				var content = $("text").value;
+				console.log(content);
+
+				// 2.判断输入框中的值是否为空
+				if(content === ""){
+					alert("请输入评论!!!");
+					return;
+				}
+
+				// 3.将获取到的内容插入到留言区
+				var li = document.createElement("li");
+				li.innerHTML = content + '<a href="#">删除</a>';
+				// $("ul").appendChild(li);
+				$("ul").insertBefore(li, $("ul").children[0]);
+
+				// 4.清除输入框中的内容
+				$("text").value = "";
+
+				// 5.删除评论,先便利所有li节点
+				var as = $("ul").getElementsByTagName("a");
+				for (var i = 0; i < as.length; i++) {
+					var arr = as[i];
+					arr.onclick = function () {
+						this.parentNode.remove();
+					}
+				}
+			}
+		};
+
+		function $(id) {
+			return typeof id === "string" ? document.getElementById(id):null;
+		}
+	</script>
+</body>
+</html>

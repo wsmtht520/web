@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3:过渡--实现图片文字介绍滑动效果</title>
+	<style type="text/css">
+		/*
+		功能介绍：鼠标移到图片上，从底部向上滚动出半透明遮罩显示文字效果，鼠标移走后遮罩层消失。
+		          这是一种very very 常见的一种图片特效。
+		思路：其实就是使用过渡transition+定位来实现
+		练习思考：font-size,line-height，padding,margin等距离长度的具体含义理解
+		 */
+		#father{
+			width: 1000px;
+			/*border:2px solid red;*/
+		}
+
+		/*定义外层盒子div样式*/
+		.son{
+			width: 285px;
+			height: 340px;
+			position: relative;
+			/*布局盒子*/
+			float: left;
+			margin:20px;
+			padding: 0px;
+			/*为了使B便签的文字在最下面一行*/
+			overflow: hidden;
+			border:2px solid blue;
+		}
+		/*设置图片样式*/
+		.son img{
+			width: 285px;
+			height: 340px;
+		}
+		/*设置段落样式*/
+		.son p{
+			width: 285px;
+			height: 340px;
+			/*布局P便签的文字位置*/
+			position: absolute;
+			left: 0px;
+			top: 293px;
+			font-size: 14px;
+			color: #30CEA8FF;
+			background-color: rgba(0,0,0,0.3);
+			/*作用域不同，函数反应时间不一样,点击范围也不一样*/
+			transition: all 0.3s ease-in-out;
+		}
+		.son p b{
+			/*将b标签转换为块元素,为其设置边框*/
+			display: block;
+			margin: 0px;
+			padding: 0px;
+			font-size: 20px;
+			font-family: cursive;
+			font-style: italic;
+			color: #F3250BFF;
+			text-align: center;
+			/*transition: all 0.3s ease-in-out;*/
+		}
+
+		.son p span{
+			font-family: serif;
+			display: block;
+			padding: 15px;
+		}
+
+		.son:hover p{
+			/*这里尤为重要，设置top:0px，则P块距离顶部有20px差距*/
+			top:-20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div class="son">
+			<img src="../special/img/5.jpg">
+			<p>
+				<b>Red-eyed tree frogs</b>
+				<span>Red-eyed tree frogs, as their name states, have bold red eyes with vertically narrowed pupils, a vibrant green body with yellow and blue striped sides, and orange toes. There is a great deal of regional variation in flank and thigh coloration.<br>Although it has been suggested that A. callidryas' bright colors function as aposematic or sexual signals, neither of these hypotheses have been confirmed.</span>
+			</p>
+		</div>
+		<div class="son">
+			<img src="../special/img/3.jpg">
+			<p>
+				<b>The Emperor Penguin</b>
+				<span>The Emperor Penguin (Aptenodytes forsteri) is the tallest and heaviest of all living penguin species and is endemic to Antarctica.<br>The male and female are similar in plumage and size, reaching 122 cm (48 in) in height and weighing anywhere from 22.37 kg (48.82 lb). The dorsal parts are black and sharply delineated from the white belly, pale-yellow breast and bright-yellow ear patches.</span>
+			</p>
+		</div>
+		<div class="son">
+			<img src="../special/img/14.jpg">
+			<p>
+				<b>A pelican</b>
+				<span>A pelican is a large water bird with a distinctive pouch under the beak, belonging to the bird family Pelecanidae.<br>Along with the darters, cormorants, gannets, boobies, frigatebirds, and tropicbirds, pelicans make up the order Pelecaniformes. Modern pelicans are found on all continents except Antarctica.</span>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

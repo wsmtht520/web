@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扑克牌练习</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+
+		.div{
+			width: 310px;
+			height: 438px;
+			border:2px solid green;
+			background-color: skyblue;
+			margin:50px auto;
+			/*透视属性,近小远大*/
+			perspective: 300px;
+		}
+
+		.div img{
+			/*形变中心点*/
+			transform-origin: center bottom;
+			transition: transform 1s;
+		}
+
+		.div:hover img{
+			cursor: pointer;
+			transform: rotateX(60deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="div"><img src="images/pk.png"></div>
+</body>
+</html>

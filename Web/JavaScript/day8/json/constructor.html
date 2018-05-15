@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中构造函数</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 1.1 无参数的构造函数
+		function Person () {
+			var obj = new Object();
+			// 属性
+			var name = null;
+			var age = null;
+			var sex = null;
+
+			// 方法
+			obj.study = function(){
+				console.log(this.name+"学习");
+			}
+
+			obj.sleep = function(){
+				console.log(this.name+"睡觉");
+			}
+			return obj;
+		}
+
+		var p = new Person();
+		console.log(p);
+		p.name = "张珊";
+		p.age = 21;
+		p.sex = "女";
+		console.log(p.name+":"+p.age+":"+p.sex);
+		p.study();
+		p.sleep();
+
+	</script>
+
+	<script type="text/javascript">
+		// 1.2 带参数的构造函数
+		function Person (name,age,sex,other) {
+		
+			// 属性
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+
+			// 方法
+			this.study = function(what){
+				console.log(this.name+"学习"+what);
+			}
+
+			this.sleep = function(when){
+				console.log(this.name+"睡了"+when);
+			}
+		}
+
+		var p2 = new Person("王海",23,"男");
+		console.log(p2.name+":"+p2.age+":"+p2.sex);
+		p2.study("web前端");
+		p2.sleep("12个小时");
+	</script>
+
+	<script type="text/javascript">
+		// 1.3 构造函数：传字面量对象。将数据与业务逻辑处理分开
+		function Person (option) {
+		
+			// 属性
+			this.name = option.name;
+			this.age = option.age;
+			this.sex = option.sex;
+
+			// 方法
+			this.study = function(what){
+				console.log(this.name+"学习"+what);
+			}
+
+			this.sleep = function(when){
+				console.log(this.name+"睡了"+when);
+			}
+		}
+
+		var p3 = new Person({name:"维珍",age:26,sex:"女"});
+		console.log(p3.name+":"+p3.age+":"+p3.sex);
+	</script>
+	<script type="text/javascript">
+		// 1.4 构造函数：通过prototype的共享库创建方法
+		/*function Person (option) {
+		
+			// 属性
+			this.name = option.name;
+			this.age = option.age;
+			this.sex = option.sex;
+		}*/
+		function Person (option) {
+		
+			this._init(option);
+		}
+		// 将属性添加到prototype
+		people.prototype = function(){
+
+			_init:function (option) {
+				// 属性
+				this.name = option.name;
+				this.age = option.age;
+				this.sex = option.sex;
+			}
+
+			study:function (what){
+				console.log(this.name+"学习"+what);
+			}
+
+			sleep:function (when){
+				console.log(this.name+"睡了"+when);
+			}
+		}
+
+		var p3 = new Person({name:"维珍",age:26,sex:"女"});
+		console.log(p3.name+":"+p3.age+":"+p3.sex);
+	</script>
+</body>
+</html>

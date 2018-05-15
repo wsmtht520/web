@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Position练习:焦点图</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+		ul,ol{list-style-type: none;}
+
+		a{
+			text-decoration: none;
+			color: rgba(0,0,0,0.7);
+		}
+
+		div{
+			width: 430px;
+			height: 250px;
+			margin:0 auto;
+			margin-top: 90px;
+			border: 1px solid #efefef;
+			position: relative;
+		}
+
+		div img{
+			width: 430px;
+			height: 250px;
+
+		}
+
+		span{
+			width: 50px;
+			/*height: 100px;*/
+			display: inline-block;
+			background-color: rgba(0,0,0,0.3);
+			font-size: 50px;
+			text-align: center;
+			line-height: 100px;
+		}
+
+		div a .prev{
+			position: absolute;
+			top: 50%;
+			left: 0px;
+			margin-top: -50px;
+		}
+		div a .next{
+			position: absolute;
+			top: 50%;
+			right: 0px;
+			margin-top: -50px;
+		}
+
+		ol{
+			width: 150px;
+			height: 30px;
+			background-color: rgba(255,255,255,0.7);
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+		}
+
+		ol li{
+			float: left;
+			width: 30px;
+			/*height: 40px;*/
+			text-align: center;
+			line-height: 30px;
+			border:1px solid gold;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/ad.jpg">
+		<a href=""><span class="prev">&lt;</span></a>
+		<a href=""><span class="next">&gt;</span></a>
+		<ol>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+</body>
+</html>

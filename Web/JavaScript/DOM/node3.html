@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加节点练习</title>
+	<script type="text/javascript">
+		function appNode()  {
+			// 获取文本框中的输入值,创建一个文本节点
+			var str = document.getElementById("tet").value;
+			console.log(document.getElementById("tet").innerHTML);
+			console.log(document.getElementById("tet").innerText);
+			console.log(document.getElementById("tet").value);
+			var text = document.createTextNode(str);
+			// 创建一个li元素节点
+			var node = document.createElement("li");
+			// 将文本框中的值添加到创建的li节点中
+			node.appendChild(text);
+			// 获取到父节点
+			var node2 = document.getElementById("ul");
+			// 将子节点加入到父节点后
+			node2.appendChild(node);
+
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul">
+		<li>java</li>
+		<li>css</li>
+		<li>html</li>
+		<li>javascript</li>
+	</ul>
+	插入的文本框值：<input type="text" id="tet" value="">
+	<input type="button" name="but"  value="添加技能" onclick="appNode()">
+</body>
+</html>

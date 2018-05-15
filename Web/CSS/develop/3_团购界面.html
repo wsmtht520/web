@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Position练习:团购界面</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+
+		div{
+			width: 500px;
+			height: 450px;
+			border:1px solid blue;
+			margin:0 auto;
+			margin-top: 40px;
+			position: relative;
+		}
+
+		div img{
+			width: 500px;
+			height: 300px;
+		}
+		div .bg1{
+			width: 45px;
+			height: 44px;
+			/*display: block;*/
+			background: url(images/tuangou.png) no-repeat 0px -280px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+
+		div .bg2{
+			width: 134px;
+			height: 43px;
+			/*display: block;*/
+			background: url(images/tuangou.png) no-repeat 0px -362px;
+			position: absolute;
+			top: 263px;
+			left: -6px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/meat.jpg">
+		<span class="bg1"></span>
+		<span class="bg2"></span>
+		<p>好吃,请及时购买,团购只要8折</p>
+	</div>
+</body>
+</html>

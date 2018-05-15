@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 节点的innerHTML,innterText与value属性区别 -->
+	<!-- 	 -->
+</head>
+<body>
+	<div id="div1">绿叶学习网站</div>
+	<div id="div2"><span>绿叶</span></div>
+	<div id="div3"><p></p></div>
+	输入框1：<input type="text" name="" id="text1">
+	输入框2：<input type="text" name="" id="text2">
+	<script type="text/javascript">
+		var node1 = document.getElementById("div1");
+		console.log(node1.innerHTML);  //控制台显示绿叶学习网站
+		console.log(node1.innerText);  //控制台显示绿叶学习网站
+
+		var node2 = document.getElementById("div2");
+		console.log(node2.innerHTML);  //控制台显示<span>绿叶</span>
+		console.log(node2.innerText);  //控制台显示绿叶
+
+		var node3 = document.getElementById("div3");
+		console.log(node3.innerHTML);  //控制台显示<p></p>
+		console.log(node3.innerText);  //控制台显示没有
+
+		var node4 = document.getElementById("text1");
+		node4.value = node1.innerHTML;
+		var node5 = document.getElementById("text2");
+		node5.value = node2.innerHTML;
+        
+	</script>
+</body>
+</html>

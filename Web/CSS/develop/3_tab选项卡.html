@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Position定位练习:tab选项卡</title>
+	<style type="text/css">
+		/*
+		1. 相对relative定位：
+		     1. 对行内/块级/行内块元素有区别;2.由于不脱离文档流,还占用空间，会对界面布局不便
+		2. 绝对定位诶absolute定位：
+		     1. 脱离文档流后变为块级元素; 2.默认情况下,如果祖先元素没有定位元素,则以body为参考点
+		     但是实际上是以当前可视化页面为,而不是整个页面,所以会随着整个页面的宽度及高度的改变而改变;3.一个绝对定位的元素往往会会略祖先元素的padding值;
+		3. 固定定位fixed：
+		     1.脱离文档流; 2. 可以让一个元素不随着滚动条的滚动而滚动(导航栏,广告弹窗,底部返回栏)
+		*/
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+		ul,ol{list-style-type: none;}
+		ul{
+			width: 900px;
+			height: 40px;
+			background-color: #6DE519FF;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+
+		ul li{
+			box-sizing: border-box;
+			float: left;
+			width: 100px;
+			/*height: 40px;*/
+			/*text-align: center;*/
+			line-height: 40px;
+		}
+
+		ul li:nth-of-type(4){
+			background-color: gold;
+			position: relative;
+		}
+
+		ul li:nth-of-type(4) img{
+			position: absolute;
+			top: -7px;
+			left: 50%;
+			margin-left: -20px;
+		}
+
+		li+li{
+			border-left: 1px solid #fefefe;
+		}
+
+		ul li a{
+			display: inline-block;
+			text-decoration: none;
+			color: black;
+			width: 100px;
+			height: 40px;
+		}
+
+		ul li a:hover{
+			background-color: #efefef;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="">女装男装</a></li>
+		<li><a href="">女鞋男鞋</a></li>
+		<li><a href="">居家百货</a></li>
+		<li><a href="">家纺家居</a><img src="images/hot.png"></li>
+		<li><a href="">母婴食品</a></li>
+		<li><a href="">美妆</a></li>
+		<li><a href="">运动户外</a></li>
+		<li><a href="">数码电器</a></li>
+		<li><a href="">箱包配饰</a></li>
+	</ul>
+</body>
+</html>

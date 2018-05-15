@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation练习:无限翻滚</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+
+		div{
+			width: 640px;
+			height: 200px;
+			border:1px solid #000;
+			margin:150px auto 0;
+			overflow: hidden;
+		}
+
+		div ul{
+			list-style-type: none;
+			width: 3000px;
+			height: 200px;
+			background-color: black;
+			animation:move 15s linear 0s infinite normal;
+		}
+
+		div ul li{
+			width: 320px;
+			height: 200px;
+			float: left;
+			/*background-color: red;*/
+			/*border:1px solid #fefe;
+			box-sizing: border-box;*/
+		}
+
+		div ul:hover{
+			animation-play-state: paused;
+		}
+
+		div ul:hover li{
+			opacity: 0.5;
+		}
+
+		div ul li:hover{
+			opacity: 1;
+		}
+
+		@keyframes move{
+			form{
+				margin-left: 0px;
+			}
+			to{
+				margin-left: -1280px;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><img src="images2/ad2.jpg"></li>
+			<li><img src="images2/ad3.jpg"></li>
+			<li><img src="images2/ad4.jpg"></li>
+			<li><img src="images2/ad5.jpg"></li>
+			<li><img src="images2/ad2.jpg"></li>
+			<li><img src="images2/ad3.jpg"></li>
+		</ul>
+	</div>
+	
+</body>
+</html>

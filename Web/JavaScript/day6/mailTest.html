@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邮件列表练习</title>
+	<!-- 项目需求：
+	1. 制作一个邮件接受显示列表，主体包括表格头，表格内容
+	2. 表格头四行：框选栏，发件人，邮件名称，邮件内容
+	3. 特殊按钮：全选框，删除框，反选框，取消选择
+	 -->
+	 <link rel="stylesheet" type="text/css" href="mailTest.css">
+	 <script type="text/javascript" src="mailTest.js"></script>
+</head>
+<body onload="changeTableColor()">
+	<table id="mailTable">
+		<tr>
+			<th>选择框</th>
+			<th>发件人</th>
+			<th>邮件名称</th>
+			<th>邮件内容</th>
+			<th>接受时间</th>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三111</td>
+			<td>我是邮件111</td>
+			<td>邮件内容是111</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三222</td>
+			<td>我是邮件222</td>
+			<td>邮件内容是222</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三333</td>
+			<td>我是邮件333</td>
+			<td>邮件内容是333</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三444</td>
+			<td>我是邮件444</td>
+			<td>邮件内容是444</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三555</td>
+			<td>我是邮件555</td>
+			<td>邮件内容是555</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三666</td>
+			<td>我是邮件666</td>
+			<td>邮件内容是666</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三777</td>
+			<td>我是邮件777</td>
+			<td>邮件内容是777</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三888</td>
+			<td>我是邮件888</td>
+			<td>邮件内容是888</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三999</td>
+			<td>我是邮件999</td>
+			<td>邮件内容是999</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三10</td>
+			<td>我是邮件10</td>
+			<td>邮件内容是10</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="mail"></td>
+			<td>张三11</td>
+			<td>我是邮件11</td>
+			<td>邮件内容是11</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>
+				<label>
+					<input type="checkbox" name="all" value="全选" onclick="checkAll(this)">全选
+				</label>
+			</td>
+			<td colspan="4">
+				<input type="button" name="but1" value="全选" onclick="checkBox(1)" class="button">
+				<input type="button" name="but2" value="反选" onclick="checkBox(2)" class="button">
+				<input type="button" name="but3" value="取消选择" onclick="checkBox(0)" class="button">
+				<input type="button" name="but4" value="删除邮件" onclick="delMail()" class="button">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

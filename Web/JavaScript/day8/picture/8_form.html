@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单的输入框验证事件</title>
+	<style type="text/css">
+		#scores{
+			border-color: darkgray;
+			padding:5px;
+		}
+		#prompt{
+			color: darkgray;
+			font-size: 14px;
+		}
+
+		.right{
+			background: url("../images/right.png") no-repeat 5px center;
+			background-size: 14px 14px;
+			padding-left: 20px;
+			color: green !important;
+		}
+
+		.error{
+			background: url("../images/error.png") no-repeat 5px center;
+			background-size: 14px 14px;
+			padding-left: 20px;
+			color: red !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<label for="scoers">成绩:</label>
+		<input type="text" name="" value="" id="scores" placeholder="请输入您要输入的成绩">
+		<span id="prompt">请输入成绩</span>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 输入框失去焦点事件
+			$("scores").onblur = function () {
+				// 1.2 获取输入框中输入的内容,parseInt/parseFloat从头解析字符串
+				var value = parseFloat($("scores").value);
+				if(isNaN(value)){  //第一步验证
+					/*$("prompt").className = "error";
+					$("prompt").innerHTML = "请输入数字";
+					$("scores").style.borderColor = "red";*/
+					changeStyle("error","请输入数字","red");
+				}else if (value>=0 &&value<=100) { //第二步验证
+					/*$("prompt").className = "right";
+					$("prompt").innerHTML = "输入成绩正确";
+					$("scores").style.borderColor = "lightgreen";*/
+					changeStyle("right","输入成绩正确","lightgreen");
+				}else{
+					/*$("prompt").className = "error";
+					$("prompt").innerHTML = "请输入0-100之间的分数";
+					$("scores").style.borderColor = "red";*/
+					changeStyle("error","请输入0-100之间的分数","red");
+				}
+			}
+
+			// 2.输入框获得焦点
+			$("scores").onfocus = function () {
+				/*$("prompt").className = "";
+				$("prompt").innerHTML = "请输入成绩";
+				$("scores").style.borderColor = "darkgray";*/
+				changeStyle("","请输入成绩","darkgray");
+				$("scores").value = "";
+			}
+		};
+
+		// 提取共工样式，优化代码
+		function changeStyle(className,msg,color){
+			$("prompt").className = className;
+			$("prompt").innerHTML = msg;
+			$("scores").style.borderColor = color;
+		}
+		function $(id) {
+	        return typeof id === "string" ? document.getElementById(id) : null;
+	    }
+	</script>
+</body>
+</html>

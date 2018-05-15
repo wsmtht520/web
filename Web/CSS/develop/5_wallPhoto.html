@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3项目练习：变形--实现个性化图片墙V1.0版</title>
+	<!-- 
+	练习思考：
+	1. img便签引入的图片与background-image引入的图片含义不一样，两者的属性及使用方法不能搞混
+	2. background-*使用时要考虑很多，比如图片大小，是否要重叠等等。
+	 -->
+	<style type="text/css">
+		#father{
+			position: relative;
+			width: 1000px;
+			height: 600px;
+			border:1px solid blue;
+			border-radius: 30px;
+			margin:0 auto;
+			background-size: 1000px 600px;
+			background-image: url("../special/img/23.jpg");
+		}
+		
+		#father img{
+			/*这句很重要,没有的话，多个图片的位置成一排*/
+		    position: absolute;
+			width:140px;
+			height: 93px;
+			background-repeat: no-repeat;
+		}
+
+		#father img{
+			box-shadow: -2px 0px 5px 1px orange,
+						0px -2px 6px 1px purple,
+						2px 0px 6px 1px red,
+						0px 2px 6px 1px blue;
+		}
+		#father h2{
+			text-align: center;
+			font-family: cursive;
+			font-style: italic;
+			text-shadow: 2px 2px 3px purple;
+		}
+		#father img:first-of-type{
+			/*不能使用background-position来安排位置*/
+			left: 230px; top: 130px;
+			/*background-position: 260px 100px;*/
+			transform: rotate(30deg);
+		}
+		#father img:nth-of-type(2){
+			left: 460px; top: 130px;	
+			/*background-position: 400px 160px;*/
+			transform: rotate(-20deg);
+		}
+		#father img:nth-of-type(3){
+			left: 680px; top: 130px;	
+			/*background-position: 520px 166px;*/
+			transform: rotate(28deg);
+		}
+		#father img:nth-of-type(4){
+			left: 230px; top: 290px;	
+			/*background-position: 253px 240px;*/
+			transform: rotate(30deg);
+		}
+		#father img:nth-of-type(5){
+			left: 460px; top: 290px;	
+			/*background-position: 398px 238px;*/
+			transform: rotate(-17deg);
+		}
+		#father img:nth-of-type(6){
+			left: 680px; top: 290px;	
+			/*background-position: 398px 238px;*/
+			transform: rotate(23deg);
+		}
+		#father img:nth-of-type(7){
+			left: 330px; top: 460px;	
+			/*background-position: 398px 238px;*/
+			transform: rotate(-17deg);
+		}
+		#father img:last-of-type{
+			left: 550px; top: 460px;
+			/*background-position: 531px 240px;*/
+			transform: rotate(23deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<h2>哇，这里山很高，水很清，树很绿</h2>
+		<img src="../special/img/13.jpg" alt="13" title="13">
+		<img src="../special/img/3.jpg" alt="3" title="3"> 
+		<img src="../special/img/5.jpg" alt="5" title="5">
+		<img src="../special/img/6.jpg" alt="6" title="6">
+		<img src="../special/img/7.png" alt="7" title="7">
+		<img src="../special/img/9.jpg" alt="9" title="9"> 
+		<img src="../special/img/12.jpg" alt="12" title="12"> 
+		<img src="../special/img/14.jpg" alt="14" title="14"> 
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3项目练习：过渡--鼠标移动上去显示全部文字</title>
+	<style type="text/css">
+		/*问题：当显示一行时，高度要求自适应*/
+		#div1{
+			width: 300px;
+			/*background-color: #1AE471FF;*/
+			color: rgba(0,0,0,0.7);
+			border:2px solid blue;
+			border-radius: 10px;
+			margin:150px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+
+			transition-property: white-space,overflow,color,background-color;
+			transition-duration: 0.3s;
+			transition-timing-function: linear;
+			transition-delay: 0s;
+		}
+
+		#div1:hover{
+			overflow: visible;
+			white-space: normal;
+			color: rgba(0,0,0,0.3);
+			/*background-color: #E8A316FF;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">绿叶学习网成立于2015年4月1日，是一个富有活力的技术学习网站。绿叶学习网为广大网络工作者（网页开发人员、站长等）提供各种精品教程以及最精华资料。绿叶学习网跟其他垃圾采集站不一样，绿叶学习网中的每一个课程、每一篇文章，甚至每一个知识点，都凝聚了本人的最辛勤的汗水。</div>
+</body>
+</html>

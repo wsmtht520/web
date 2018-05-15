@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二维码的显示与隐藏</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+			list-style-type: none;
+		}
+
+		#e_code{
+			width: 50px;
+			height: 50px;
+			background: url("../images/e_coder_normal.png") no-repeat;
+			position: fixed;
+			top: 40%;
+			left: 0px;
+			cursor: pointer;
+		}
+
+		#e_app{
+			position: absolute;
+			top: -50px;
+			left: 50px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="e_code">
+		<div id="e_app">
+			<img src="../images/e_coder.jpg" alt="公众号" width="160px">
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 获取所有所需的标签
+			var e_code = document.getElementById("e_code");
+			var e_app = document.getElementById("e_app");
+
+			// 2. 监听鼠标移入事件
+			e_code.onmouseover = function () {
+				// 2.1 改变图片样式
+				this.style.background = 'url("../images/e_coder_selected.png") no-repeat';
+
+				// 2.2 显示二维码
+				e_app.style.display = 'block';
+			};
+
+			// 3. 监听鼠标移出事件
+			e_code.onmouseout = function () {
+				// 3.1 改变图片样式
+				this.style.background = 'url("../images/e_coder_normal.png") no-repeat';
+
+				// 3.2 隐藏二维码
+				e_app.style.display = 'none';
+			};
+		}
+	</script>
+</body>
+</html>

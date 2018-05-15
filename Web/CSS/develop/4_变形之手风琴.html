@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transform变形练习:手风琴</title>
+	<style type="text/css">
+		/*过渡的套路：
+		1. 先完成基本的页面布局;
+		2. 再修改我们认为要修改的元素属性;
+		3. 给修改属性的那个元素添加过渡模块;
+		*/
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;padding:0;
+		}
+		ul{
+			list-style-type: none;
+			width: 960px;
+			height: 300px;
+			border:1px solid #000;
+			margin:100px auto;
+			overflow: hidden;
+		}
+
+		ul li{
+			width: 160px;
+			height: 300px;
+			float: left;
+			transition:width 1s;
+		}
+
+		ul:hover li{
+			width: 100px;
+		}
+		ul li:hover{
+			width: 460px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="images/ad1.jpg"></li>
+		<li><img src="images/ad2.jpg"></li>
+		<li><img src="images/ad3.jpg"></li>
+		<li><img src="images/ad4.jpg"></li>
+		<li><img src="images/ad5.jpg"></li>
+		<li><img src="images/ad6.jpg"></li>
+	</ul>
+</body>
+</html>

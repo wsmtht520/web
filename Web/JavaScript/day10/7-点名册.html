@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器应用: 点名册</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+
+		#box{
+			width: 300px;
+			height: 200px;
+			border:1px solid #d0d0d0;
+			margin:80px auto;
+			text-align: center;
+			padding:20px;
+		}
+
+		#name{
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<button id="btn1">开始点名</button>
+		<button id="btn2">结束点名</button>
+		<div id="name"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 定义变量
+			var timer = null;
+			var arrName = new Array("陈数","许晴","周扬","俞飞鸿","高圆圆","霍思燕","陈乔恩","杨幂","左青","于明加")
+			$("name").innerText = arrName[0];
+			// console.log(Math.random()); 0-1之间的任意数字
+			
+			// 2. 监听鼠标点击事件
+			$("btn1").onclick = function () {
+				// 2.1 清除定时器
+				clearInterval(timer);
+
+				// 2.2 设置定时器
+				timer = setInterval(function () {
+					var index = parseInt(Math.random()*arrName.length);
+					$("name").innerText = arrName[index];
+				}, 20)
+			};
+
+			$("btn2").onclick = function () {
+				clearInterval(timer);
+
+				// 内置抽到固定的人
+				$("name").innerText = arrName[1];
+			}
+		};
+
+		function $(id){
+			return typeof id === "string" ? document.getElementById(id):null;
+		}
+	</script>
+</body>
+</html>

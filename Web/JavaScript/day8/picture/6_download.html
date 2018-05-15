@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页面下载</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+			list-style-type: none;
+		}
+
+		#box{
+			width: 500px;
+			margin:150px auto;
+			box-shadow: 0 0 10px #000;
+			padding:50px;
+		}
+
+		#panel-header{
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		#panel-footer{
+			margin-top: 10px;
+			text-align: center;
+		}
+
+		#panel-footer button{
+			margin-right: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<section id="panel-header">
+			<h3>网络歌曲下载栏</h3><hr>
+		</section>
+		<section id="panel-content">
+			<input type="checkbox" name="" id="box1">1.清唱<br>
+			<input type="checkbox" name="" id="box2">2.清唱<br>
+			<input type="checkbox" name="" id="box3">3.清唱<br>
+			<input type="checkbox" name="" id="box4">4.清唱<br>
+			<input type="checkbox" name="" id="box5">5.清唱<br>
+			<input type="checkbox" name="" id="box6">6.清唱<br>
+			<input type="checkbox" name="" id="box7">7.清唱<br>
+			<input type="checkbox" name="" id="box8">8.清唱<br>
+		</section>
+		<section id="panel-footer">
+			<hr>
+			<button id="selectAll">全选</button>
+			<button id="reverseSelect">反选</button>
+			<button id="deleteSelect">取消选择</button>
+		</section>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 获取到所有的复选框
+			var checkbox = document.getElementsByTagName("input");
+			// 全选事件
+			$("selectAll").onclick = function(){
+				for (var i = 0; i < checkbox.length; i++) {
+					checkbox[i].checked = true;
+				}
+			} 
+
+			// 反选
+			$("reverseSelect").onclick = function(){
+				for (var i = 0; i < checkbox.length; i++) {
+					checkbox[i].checked = !checkbox[i].checked;
+				}
+			} 
+
+			// 取消选择
+			$("deleteSelect").onclick = function(){
+				for (var i = 0; i < checkbox.length; i++) {
+					checkbox[i].checked = false;
+				}
+			} 
+		};
+
+		function $ (id) {
+			return typeof id == "string" ? document.getElementById(id):null;
+		}
+	</script>
+</body>
+</html>

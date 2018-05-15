@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片的显示与隐藏</title>
+	<style type="text/css">
+		*{margin:0px;padding: 0px;}
+		div{
+			width: 400px;
+			height: 360px;
+			border:1px solid orange;
+		}
+		#icon{
+			width: 360px; 
+			height: 260px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div>
+		<button id="button">显示</button>
+		<p></p>
+		<img src="../../img/1.jpg" id="icon">
+	</div>
+	<script type="text/javascript">
+		window.onload = function () { //点击文字，下方的图片进行显示或者隐藏
+			// 获取标签
+			var icon = document.getElementById("icon");
+			var button = document.getElementById("button");
+
+			// 绑定text点击事件
+			button.onclick = function () { //事件驱动程序
+				// 获取到文字内容,进行判断
+				if (button.innerHTML == "显示") {
+					icon.style.display = "block";
+					button.innerHTML = "隐藏";
+				} else {
+						icon.style.display = "none";
+						button.innerHTML = "显示";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

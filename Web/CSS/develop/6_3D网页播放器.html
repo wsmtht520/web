@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D播放器练习:张学友网页主界面</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ol,ul{list-style:none}
+
+		body{
+			background:url(jacky/bg.jpg) no-repeat;
+			background-size: cover;
+			overflow: hidden;
+		}
+
+		ul{
+			width: 200px;
+			height: 200px;
+			/*background-color: red;*/
+			position: absolute;
+			bottom: 100px;
+			left: 50%;
+			margin-left: -100px;
+			transform-style: preserve-3d;
+			/*transform: rotateX(-15deg);*/
+			animation:sport 6s linear 0s infinite normal;
+		}
+
+		ul li{
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: black;
+		}
+
+		ul li img{
+			width: 200px;
+			height: 200px;
+			border:5px solid skyblue;
+			box-sizing: border-box;
+		}
+
+		ul li:nth-child(1){
+			transform: rotateY(60deg) translateZ(200px);
+		}
+		ul li:nth-child(2){
+			transform: rotateY(120deg) translateZ(200px);
+		}
+		ul li:nth-child(3){
+			transform: rotateY(180deg) translateZ(200px);
+		}
+		ul li:nth-child(4){
+			transform: rotateY(240deg) translateZ(200px);
+		}
+		ul li:nth-child(5){
+			transform: rotateY(300deg) translateZ(200px);
+		}
+		ul li:nth-child(6){
+			transform: rotateY(360deg) translateZ(200px);
+		}
+
+		ul:hover{
+			animation-play-state: paused;
+		}
+
+		ul:hover li img{
+			opacity: 0.5;
+		}
+
+		ul li:hover img{
+			opacity: 1;
+			transform: scale(1.2);
+		}
+
+		@-webkit-keyframes sport{
+			 /*
+                注意点:
+                1.动画中如果有和默认样式中同名的属性, 会覆盖默认样式中同名的属性
+                2.在编写动画的时候, 固定不变的值写在前面, 需要变化的值写在后面
+                */
+
+			form{
+				-webkit-transform: rotateX(-10deg) rotateY(0deg);
+				transform: rotateX(-10deg) rotateY(0deg);
+			}
+			to{
+				-webkit-transform: rotateX(-10deg) rotateY(360deg);
+				transform: rotateX(-10deg) rotateY(360deg);
+			}
+		}
+
+		.logo{
+			width: 173px;
+			height: 157px;
+			position: absolute;
+			left: 100px;
+			bottom: 100px;
+			animation:move 10s linear infinite normal;
+		}
+
+		@-webkit-keyframes move{
+			0%{
+				left: 100px;
+				bottom: 100px;
+				opacity: 0;
+			}
+			20%{
+				left: 300px;
+				bottom: 300px;
+				opacity: 1;
+			}
+			40%{
+				left: 500px;
+				bottom:500px;
+				opacity: 0;
+			}
+			60%{
+				left: 800px;
+				bottom:300px;
+				opacity: 1;
+			}
+			80%{
+				left: 1200px;
+				bottom:100px;
+				opacity: 0;
+			}
+			100%{
+				left: 700px;
+				bottom:-200px;
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="jacky/1.png"></li>
+		<li><img src="jacky/2.jpg"></li>
+		<li><img src="jacky/3.jpg"></li>
+		<li><img src="jacky/4.gif"></li>
+		<li><img src="jacky/5.jpg"></li>
+		<li><img src="jacky/6.jpg"></li>
+	</ul>
+	<img src="jacky/xin.png" class="logo">
+	<!-- video/audio有两种书写方法： -->
+	<!-- 第一种方法 -->
+	<!-- <audio src="jacky/TiK_ToK.mp3" autoplay="autoplay" loop="loop"></audio> -->
+	<!-- 第二种方法：解决浏览器适配问题 ,当浏览器播放视频时从三种格式选择一种自己支持的格式来播放-->
+	<!--  66.0.3359.139 不支持自动播放 -->
+	<audio  autoplay="autoplay" loop="loop">
+		<source src="jacky/TiKToK.mp3" type="audio/mp4">
+		<source src="jacky/TiKToK.mp3" type="audio/webm">
+		<source src="jacky/TiKToK.mp3" type="audio/ogg">
+	</audio>
+</body>
+</html>

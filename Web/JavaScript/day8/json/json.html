@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS的字面量对象与json</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 对象具有特征及相关行为，也就是属性与方法。
+		var people = {
+			// 属性
+			name : "张珊",
+			age : 24,
+			sex : "女",
+			friends : ["李丽","王丽","曹丽"],
+
+			// 方法
+			study:function () {
+				console.log("学习");
+			},
+
+			love:function () {
+				console.log("爱情");
+			}
+		};
+		console.log(typeof people);
+		console.log(people);
+		// 调用方法
+		people.study();
+		// 调用属性
+		people.name = "王敏";
+		console.log(people);
+		// 遍历对象
+		for(var key in people){
+			console.log(key+":"+people[key]);
+		}
+
+	</script>
+</body>
+</html>

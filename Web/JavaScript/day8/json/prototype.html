@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>constructor与prototype理解</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*var arr = new Array();
+		// 给数组添加一个属性
+		arr.run = "跑";
+		// 给数组添加一个方法
+		arr.eat = function () {
+			alert("吃apple");
+		}
+		console.log(arr.run);
+		arr.eat();
+
+		// arr2调用不了,需要通过prototype调用
+		var arr2 = new Array();
+		arr2.eat();*/
+
+		// constructor返回创建此对象的构造函数; prototype动态的给构造函数修改属性及方法
+		var arr = new Array();
+		// 添加属性
+		Array.prototype.test = "测试";
+		// 添加方法
+		Array.prototype.eat = function(){
+			console.log("添加了方法：吃");
+		};
+		arr.eat();
+		var arr2 = new Array();
+		arr2.eat();
+		console.log(arr2.test);
+	</script>
+</body>
+</html>

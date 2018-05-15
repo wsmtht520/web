@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器应用之: 仿淘宝轮播图</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{
+			list-style-type: none;
+		}
+
+		a{
+			text-decoration: none;
+			color: black;
+		}
+
+		#box{
+			width: 462px;	
+			height: 315px;
+			margin:80px auto;
+			border:1px solid #c0c0c0;
+		}
+
+		#left,#right{
+			width: 80px;
+			height: 315px;
+			float: left;
+		}
+
+		ul{
+			width: 80px;
+			height: 315px;
+			/*display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;*/
+		}
+
+		ul li{
+			width: 80px;
+			height: 35px;
+			border-bottom: 1px solid #c0c0c0;
+			box-sizing: border-box;
+			text-align: center;
+			line-height: 35px;
+		}
+
+		ul li:nth-child(9){
+			border-bottom: none;
+		}
+		ul li:nth-child(18){
+			border-bottom: none;
+		}
+
+		#center{
+			width: 300px;
+			height: 315px;
+			float: left;
+			overflow: hidden;
+			border-left: 1px solid #c0c0c0;
+			border-right: 1px solid #c0c0c0;
+		}
+
+		
+		#center a img{
+			width: 300px;
+			height: 300px;
+		}
+
+		li.current{
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="left">
+			<ul>
+			 	<li class="current"><a href="#">美食1</a></li>
+		        <li><a href="#">美食2</a></li>
+		        <li><a href="#">美食3</a></li>
+		        <li><a href="#">美食4</a></li>
+		        <li><a href="#">美食5</a></li>
+		        <li><a href="#">美食6</a></li>
+		        <li><a href="#">美食7</a></li>
+		        <li><a href="#">美食8</a></li>
+		        <li><a href="#">美食9</a></li>
+			</ul>    
+		</div>
+		<div id="center">
+			<a href="#"><img src="images/img1.jpg"></a>
+	        <a href="#"><img src="images/img2.jpg"></a>
+	        <a href="#"><img src="images/img3.jpg"></a>
+	        <a href="#"><img src="images/img4.jpg"></a>
+	        <a href="#"><img src="images/img5.jpg"></a>
+	        <a href="#"><img src="images/img6.jpg"></a>
+	        <a href="#"><img src="images/img7.jpg"></a>
+	        <a href="#"><img src="images/img8.jpg"></a>
+	        <a href="#"><img src="images/img9.jpg"></a>
+	        <a href="#"><img src="images/img10.jpg"></a>
+	        <a href="#"><img src="images/img11.jpg"></a>
+	        <a href="#"><img src="images/img12.jpg"></a>
+	        <a href="#"><img src="images/img13.jpg"></a>
+	        <a href="#"><img src="images/img14.jpg"></a>
+	        <a href="#"><img src="images/img15.jpg"></a>
+	        <a href="#"><img src="images/img16.jpg"></a>
+	        <a href="#"><img src="images/img17.jpg"></a>
+	        <a href="#"><img src="images/img18.jpg"></a>
+		</div>
+		<div id="right">
+			<ul class="right">
+		        <li><a href="#">美食10</a></li>
+		        <li><a href="#">美食11</a></li>
+		        <li><a href="#">美食12</a></li>
+		        <li><a href="#">美食13</a></li>
+		        <li><a href="#">美食14</a></li>
+		        <li><a href="#">美食15</a></li>
+		        <li><a href="#">美食16</a></li>
+		        <li><a href="#">美食17</a></li>
+		        <li><a href="#">美食18</a></li>
+            </ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 获取所需要的标签
+			var lis = document.getElementsByTagName("li");
+			var imgs = document.getElementsByTagName("img");
+            
+            // 2. 设置索引
+            var loop = 0;
+			// 3. 设置定时器
+			setInterval(function () {
+				
+				loop += 1;
+				loop %=18;
+				// 2.1 遍历li节点
+				for (var i = 0; i < lis.length; i++) {
+					lis[i].className = "";
+					imgs[i].style.display = 'none';
+				}
+
+				lis[loop].className = "current";
+				imgs[loop].style.display = "inline-block";
+			}, 1000)
+		}
+	</script>
+</body>
+</html>

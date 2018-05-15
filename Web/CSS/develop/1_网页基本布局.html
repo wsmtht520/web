@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页布局</title>
+	<style type="text/css">
+
+		/* 网页的基本布局：1. 垂直方向上使用标准流布局,水平方向上采取浮动布局;
+						2. 从上到下，从外到内进行布局;
+						3. id选择器用于js使用,class选择器用于共同样式的抽取;
+		   */
+		*{
+			margin:0px;
+			padding:0px;
+			list-style-type: none;
+			margin:0 auto;
+		}
+		.header{
+			width: 950px;
+			height:100px;
+			margin-bottom: 10px;
+		}
+		.header .logo{
+			width: 250px;
+			height: 100px;
+			background-color: pink;
+			float: left;
+		}
+
+		.header .set{
+			width: 150px;
+			height: 50px;
+			background-color: green;
+			float: right;
+		}
+		.header .nav{
+			width: 620px;
+			height: 50px;
+			background-color: skyblue;
+			float: right;
+		}
+
+		.content{
+			width: 950px;
+			height:400px;
+			margin-bottom: 10px;
+		}
+
+		.content .left-side{
+			width: 320px;
+			height: 400px;
+			background-color: yellow;
+			float: left;
+			margin-right: 10px;
+		}
+		.content .right-side{
+			width: 620px;
+			height: 400px;
+			float: right;
+		}
+
+		.content .right-side .article{
+			width: 620px;
+			height: 350px;
+			margin-bottom: 10px;
+		}
+		.content .right-side .article .left{
+			width: 400px;
+			height: 350px;
+			margin-right: 10px;
+			float: left;
+		}
+
+		.content .right-side .article .left .chat{
+			width: 400px;
+			height: 100px;
+			background-color: purple;
+			margin-bottom: 10px;
+		}
+		.content .right-side .article .left .talk{
+			width: 400px;
+			height: 240px;
+			background-color: silver;
+		}
+		.content .right-side .article .right{
+			width: 210px;
+			height: 350px;
+			background-color:green;
+			float: right;
+		}
+		.content .right-side .book{
+			width: 620px;
+			height: 40px;
+			background-color: orange;
+		}
+
+		.footer{
+			width: 950px;
+			height:40px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="logo"></div>
+		<div class="set"></div>
+		<div class="nav"></div>
+	</div>
+	<div class="content">
+		<div class="left-side"></div>
+		<div class="right-side">
+			<div class="article">
+				<div class="left">
+					<div class="chat"></div>
+					<div class="talk"></div>
+				</div>
+				<div class="right"></div>
+			</div>
+			<div class="book"></div>
+		</div>
+	</div>
+	<div class="footer"></div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用按钮进行上下图片切换</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+		}
+		#box{
+			position: relative;
+			width: 400px;
+			height: 360px;
+			border:1px solid orange;
+		}
+		#icon{
+			/*定位在中间*/
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -130px;
+			margin-left: -180px;
+			/*添加边框*/
+			box-shadow: -2px 0px 5px 2px orange,
+						0px -2px 4px 2px green,
+						2px 0px 5px 2px blue,
+						0px 3px 4px 2px red;
+			width: 360px; 
+			height: 260px;
+		}
+		div button{clear: both;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="../../img/1.jpg" id="icon">
+		<button id="prev">上一张</button>
+		<button id="next">下一张</button>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () { //根据图片的index
+			// 获取标签
+			var icon = document.getElementById("icon");
+			var prev = document.getElementById("prev");
+			var next = document.getElementById("next");
+
+			var minIndex = 1,maxIndex = 7,currentIndex = minIndex;
+
+			// 绑定鼠标监听事件
+			next.onclick = function () {
+				if (currentIndex == maxIndex) { //边界值处理
+					currentIndex = maxIndex;
+				} else {
+					currentIndex++;
+				}
+				icon.src = "../../img/"+currentIndex+".jpg";
+			}
+
+			prev.onclick = function () {
+				if (currentIndex == minIndex) { //边界值处理
+					currentIndex = minIndex;
+				} else {
+					currentIndex--;
+				}
+				icon.src = "../../img/"+currentIndex+".jpg";
+			}
+		}
+	</script>
+</body>
+</html>

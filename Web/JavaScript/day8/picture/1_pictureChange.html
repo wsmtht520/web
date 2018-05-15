@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移入移出进行图片切换</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+		}
+		#box{
+			position: relative;
+			width: 400px;
+			height: 360px;
+			border:1px solid orange;
+		}
+		#icon{
+			/*定位在中间*/
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -130px;
+			margin-left: -180px;
+			/*添加边框*/
+			box-shadow: -2px 0px 5px 2px orange,
+						0px -2px 4px 2px green,
+						2px 0px 5px 2px blue,
+						0px 3px 4px 2px red;
+			width: 360px; 
+			height: 260px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="../../img/1.jpg" id="icon">
+	</div>
+	<script type="text/javascript">
+		window.onload =  function () {
+			// 1.获取标签
+			var box = document.getElementById("box");
+			var icon = document.getElementById("icon");
+
+			// 2.绑定鼠标事件
+			icon.onmouseover = function () {
+				console.log("鼠标移入");
+				this.src = "../../img/2.jpg";
+			}
+
+			icon.onmouseout = function () {
+				console.log("鼠标移出");
+				this.src = "../../img/1.jpg";
+			}
+
+		}
+		
+	</script>
+</body>
+</html>

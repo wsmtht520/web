@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片切换之轮播效果展示</title>
+	<style type="text/css">
+		*{margin:0px;padding: 0px;list-style-type: none;}
+		body{margin-left: 300px;margin-top: 60px;}
+		/*对主界面的图片进行设置*/
+		#mainIcon{width: 648px;height: 350px;}
+		/*对初级li进行上下间距调整*/
+		.fix{margin-bottom: 10px;}
+		/*对次级li进行浮动设置*/
+		.classfix{float: left;margin-right: 12px;}
+		/*对图片大小进行设置*/
+		.classfix a img{width:120px;height: 100px; }
+		/*鼠标悬停在图片上时进行边框展示*/
+		.classfix:hover{border:1px dashed red;background-color: rgba(0,0,0,0.8);}
+		#text{color: red;font-size: 20px;}  
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li class="fix"><h2 id="text">王淑敏</h2></li>
+			<li class="fix"><img src="../../img/1.jpg" title="" id="mainIcon"></li>
+			<li class="fix">
+				<ul id="neagv">
+					<!-- 对li的共同样式进行定义 -->
+					<li class="classfix"> 
+						<a href="../../img/1.jpg">
+							<img src="../../img/1.jpg" title="王淑敏">
+						</a>
+					</li>
+					<li class="classfix">
+						<a href="../../img/2.jpg">
+							<img src="../../img/2.jpg" title="宜昌风景">
+						</a>
+					</li>
+					<li class="classfix">
+						<a href="../../img/3.jpg">
+							<img src="../../img/3.jpg" title="大学同学">
+						</a>
+					</li>
+					<li class="classfix">
+						<a href="../../img/4.jpg">
+							<img src="../../img/4.jpg" title="小小自拍11">
+						</a>
+					</li>
+					<li class="classfix">
+						<a href="../../img/5.jpg">
+							<img src="../../img/5.jpg" title="小小自拍22">
+						</a>
+					</li>
+		        </ul>
+			</li>
+		</ul>
+	</div>
+	 
+	<script type="text/javascript">
+		// 获取标签
+		var text = document.getElementById("text");
+		var mainIcon = document.getElementById("mainIcon");
+		// console.log(document.getElementsByTagName("img"));
+		var imgs = document.getElementsByTagName("img");
+
+		// 给每一张图片进行点击事件绑定
+		for (var i = 1; i < imgs.length; i++) {
+			imgs[i].onmouseover = function () {
+				text.innerHTML = this.title;
+				mainIcon.src = this.src;
+				// 避免超链接进行跳转
+				return false;
+			}
+		}
+		
+	</script>
+	
+</body>
+</html>

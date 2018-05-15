@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>background的精灵图片</title>
+	<style type="text/css">
+		/*CSS精灵图：实质上就是一种图像合成技术,这样做的好处为：
+		1.减少请求次数,减轻服务器的压力；
+		2.在企业开发中,通常使用精灵图通过背景图片的定位属性进行设计;*/
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+			margin:0;
+			padding:0;
+		}
+		.box{
+			width: 44px;
+			height: 44px;
+			background: url(../images/img.png) no-repeat;
+			background-position: -144px -216px;
+		}
+
+		.box2{
+			width: 100px;
+			height: 100px;
+			border:1px solid red;
+			/*line-height: 100px;*/
+			/*单行行高将盒子高度设置为行高;多行文字在盒子中垂直居中,通过padding+box-size*/
+			line-height: 20px;
+			padding:30px 0px;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box2">
+		<p>文字1111</p>
+		<p>文字2222</p>
+	</div>
+</body>
+</html>

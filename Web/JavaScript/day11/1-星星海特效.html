@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星星海特效</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		body{
+			background-color: #000;
+		}
+
+		span{
+			position: absolute;
+			width: 56px;
+			height: 56px;
+			background: url(images/star.png) no-repeat;
+			animation: flash 0.5s linear 0s infinite alternate;
+		}
+
+		span:hover{
+			transform: scale(1.6) rotate(180deg) !important;
+			transition: all 0.4s;
+
+		}
+
+		@keyframes flash{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1.获取屏幕宽度与高度
+			var windowX = document.documentElement.clientWidth;
+			var windowY = document.documentElement.clientHeight;
+			// console.log(windowX+":"+windowY);
+			
+			// 2.动态创建星星
+			for (var i = 0; i < 160; i++) {
+				var span = document.createElement("span");
+				document.body.appendChild(span);
+
+				// 3. 获取随机坐标
+				span.style.left = Math.random()*windowX + "px";
+				span.style.top = Math.random()*windowY + "px";
+
+				// 4. 随机缩放
+				span.style.transform = "scale("+Math.random()*1.2+")";
+
+				// 5. 控制每个星星的频率
+				span.style.animationDelay = Math.random()*1.8 +"s";
+			}	
+		}
+	</script>
+</body>
+</html>

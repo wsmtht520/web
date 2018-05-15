@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物商城图片切换</title>
+	<style type="text/css">
+		*{margin:0;padding: 0;list-style-type: none;}
+		#box{
+			width: 360px;
+			height:70px;
+			border:1px solid blue;
+			/*设置盒子水平居中*/
+			margin:100px auto;
+			/*将盒子向上拉升*/
+			padding-top: 360px;
+			/*padding-bottom: 360px;*/
+			background: url("../images/01big.jpg") no-repeat;
+		}
+		
+		ul{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="../images/01.jpg"></li>
+			<li><img src="../images/02.jpg"></li>
+			<li><img src="../images/03.jpg"></li>
+			<li><img src="../images/04.jpg"></li>
+			<li><img src="../images/05.jpg"></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		// 1. 获取所需要的标签
+		var box = document.getElementById("box");
+		var li = document.getElementsByTagName("li");
+
+		// 2. 绑定事件
+		for (var i = 0; i < li.length; i++) {
+			/*
+			2.1 记录当前图片的角标值,这点很重要,要锁定节点与图片角标值,同步与异步机制
+			    通过index属性进行动态绑定,并获取单个便签
+			*/
+			/*var lis = li[i];
+			lis.index = i+1;
+			
+			lis.onmouseover = function () {
+				console.log("当前图片角标为："+this.index);
+				box.style.background = 'url("../images/0'+this.index+'big.jpg") no-repeat' ;
+			}*/
+
+			// 2.2 通过闭包解决
+			(function (i) {
+				li[i].onmouseover = function () {
+					console.log("当前图片角标为："+(i+1));
+					box.style.background = 'url("../images/0'+(i+1)+'big.jpg") no-repeat' ;
+				}
+			})(i);
+		}
+	</script>
+</body>
+</html>

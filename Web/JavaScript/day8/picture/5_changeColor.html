@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片换肤</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			list-style-type: none;
+			vertical-align: top;
+		}
+
+		body{
+			background: url("../images/1.jpg") no-repeat;
+			-webkit-background-size:cover;
+			background-size:cover;
+		}
+
+		#box{
+			background-color: rgba(0,0,0,0.3);
+		}
+
+		#box ul{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			cursor: pointer;
+		}
+
+		#box ul li img{
+			width: 260px;
+			height: 170px;
+			margin:10px 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="../images/1.jpg" title=""></li>
+			<li><img src="../images/2.jpg" title=""></li>
+			<li><img src="../images/3.jpg" title=""></li>
+			<li><img src="../images/4.jpg" title=""></li>
+			<li><img src="../images/5.jpg" title=""></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		// 获取所需的标签,缩小范围
+		var box = document.getElementById("box");
+		var li = box.getElementsByTagName("li");
+
+		// 鼠标监听事件
+		for (var i = 0; i < li.length; i++) {
+			// 防止for循环的同步与鼠标点击的异步发生冲突
+			var arr = li[i];
+			arr.index = i+1;
+			arr.onmouseover = function () {
+				document.body.style.background = 'url("../images/'+this.index+'.jpg") no-repeat';
+			}
+		}
+	</script>
+</body>
+</html>

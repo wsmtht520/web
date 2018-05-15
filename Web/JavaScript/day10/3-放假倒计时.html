@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器应用:放假倒计时</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+
+		#time{
+			font-size: 40px;
+			color: red;
+			width: 100%;
+			height: 90px;
+			text-align: center;
+			margin-top: 80px;
+		}
+
+		.img{
+			text-align: center;
+		}
+
+		#pic{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="time"></div>
+	<div class="img"><img src="images/flower.gif" alt="" id="pic"></div>
+	<script type="text/javascript">
+		window.onload = function () {
+			
+			// 2.自定义将来的时间
+			var nextDate = new Date("2018/06/15 08:00:00");
+			
+			// 2.设置定时器
+			var timer = setInterval(function () {
+				// 2.1 获取当前时间
+				var currentDate = new Date();
+
+				// 2.2 获取时间戳
+				var currentTime = currentDate.getTime();
+				var nextTime = nextDate.getTime();
+				// console.log(currentTime);
+				// console.log(nextTime);
+
+				// 2.3 将未来时间戳减去当前时间戳得到差值
+				var allTime = nextTime - currentTime;
+				// console.log(allTime);
+				
+				// 2.4 将剩余毫秒时间转换为秒
+				var allSecond = parseInt(allTime/1000);
+
+				// 转化
+				var d = size(parseInt(allSecond/3600/24));
+				var h = size(parseInt(allSecond/3600%24));
+				var m = size(parseInt(allSecond/60%60));
+				var s = size(parseInt(allSecond%60));
+
+				if(d==0 && h==0 && m==0 && s==0){
+					clearInterval(timer);
+					$("pic").style.display = 'inline-block';
+				}
+				// 2.5 拼接
+				$("time").innerText = "距离她还有"+d+"天-"+h+"小时-"+m+"分-"+s+"秒";
+
+			}, 1000);
+		};
+
+		// 将时间显示两位数
+		function size (num) {
+			return num >= 10 ? num : "0"+num ;
+		}
+
+		function $(id){
+			return typeof id === "string" ? document.getElementById(id):null;
+		}
+	</script>
+</body>
+</html>
