@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件传递机制:冒泡机制</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			width: 400px;
+			height: 400px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<button id="btn">点击</button>
+	</div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		// 1.事件从dom树的底层,层层往上传递,直至传递到dom的根节点
+		window.onload = function () {
+			$("btn").onclick = function (event) {
+				// 2. 阻止冒泡
+				if(event && event.stopPropagation){ // w3c标准
+            		event.stopPropagation();
+		        }else{ // IE系列 IE 678
+		            event.cancelBubble = true;
+		        }
+
+				alert("点击了按钮");
+			};
+
+			$("father").onclick = function (event) {
+				// if (event && event.stopPropagation) {
+				// 	event.stopPropagation();
+				// } else {
+				// 	event.cancelBubble = true;
+				// }
+				alert("father点击了");
+			};
+
+			document.onclick = function () {
+				alert("文档点击了");
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>client/scroll/offset区别</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		#box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			border:5px solid blue;
+			margin:40px 0 0 40px;
+			padding:30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript">
+		var box = document.getElementById("box");
+		// 1. width和height  都是不带px的
+		// offset获得内容+padding+border
+		console.log(box.offsetWidth,box.offsetHeight);
+		// client获得可视区域的宽高 内容+padding
+		console.log(box.clientWidth,box.clientHeight);
+		// scroll获得可滚动的内容的宽高
+		
+		// 2. left与top
+		// 当前元素距离有定位的父盒子左边的距离；offsetTop: 当前元素距离有定位的父盒子上边的距离
+	    console.log(box.offsetLeft, box.offsetTop);
+	    // clientLeft: 左边边框的宽度；clientTop: 上边边框的宽度
+	    console.log(box.clientLeft, box.clientTop);
+	    // scrollLeft: 左边滚动的长度; scrollTop: 上边滚动的长度;
+	    console.log(box.scrollLeft, box.scrollTop);
+
+	</script>
+</body>
+</html>

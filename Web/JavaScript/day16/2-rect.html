@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用原型库绘制矩形</title>
+	<style type="text/css">
+		body{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="father"></div>
+	<script type="text/javascript" src="js/rect.js"></script>
+	<script type="text/javascript">
+			// 实例化
+			var react = new React({
+				"parentId" : "father",
+				"left" : 180,
+				"top" : 180,
+				"width":200,
+				"height":150,
+				"border":"3px solid red",
+				"borderRadius" : 10,
+				"backgroundColor" : "green"
+			});
+
+			react.render();
+	</script>
+</body>
+</html>

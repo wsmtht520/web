@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>缓动动画:联动特效清除广告弹窗</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+		img{
+			vertical-align: top;
+		}
+
+		#box{
+			position: fixed;
+			right: 0;
+			bottom: 0;
+		}
+
+		#box span{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			top: 0;
+			right: 0;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="top">
+			<img src="images/top.jpg">
+		</div>
+		<div id="bottom">
+			<img src="images/bottom.jpg">
+		</div>
+		<span id="span"></span>
+	</div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		var span = $("span");
+		var top = $("top");
+		var bottom = $("bottom");
+		var box = $("box");
+
+		span.onclick = function () {
+			buffer(bottom,{"height":0},function () {
+				buffer(box,{"width":0},function () {
+					span.style.display = "none";
+				})
+			});
+		}
+	</script>
+</body>
+</html>

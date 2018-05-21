@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event事件：天猫弹性导航布置</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+		
+		body{
+			background-color: pink;
+		}
+
+		#box{
+			width: 900px;
+			height: 63px;
+			margin:80px auto;
+			border:1px solid #ccc;
+			border-radius: 5px;
+			background:url("images/doubleOne.png") no-repeat right center #fff;
+			position: relative;
+		}
+
+		#ul{
+			width: 810px;
+			height: 63px;
+			position:relative;
+		}
+		#ul li{
+			float: left;
+			width: 90px;
+			height: 63px;
+			text-align: center;
+			line-height: 63px;
+			cursor: pointer;
+		}
+
+		#pic{
+			width: 88px;
+			height: 63px;
+			position: absolute;
+			top: -2px;
+			left: 0;
+			background: url(images/tMall.png) no-repeat;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<span id="pic"></span>
+		<ul id="ul">
+			<li>双11狂欢</li>
+	        <li>服装会场</li>
+	        <li>数码家电</li>
+	        <li>家具建材</li>
+	        <li>母婴童装</li>
+	        <li>手机会场</li>
+	        <li>美妆会场</li>
+	        <li>进口会场</li>
+	        <li>飞猪旅行</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 获得需要的标签
+			var lis = $("ul").children;
+
+			// 记录初始位置
+			var beginX = 0;
+
+			// 2. 遍历li节点
+			for (var i = 0; i < lis.length; i++) {
+				var li = lis[i];
+
+				// 2.1 监听鼠标进入事件
+				li.onmouseover = function () {
+					end = this.offsetLeft;
+				}
+
+				// 2.2 监听鼠标按下事件
+	            // li.onmousedown = function () {
+	            //     beginX = this.offsetLeft;
+	            // };
+
+	            2.2 监听鼠标离开事件,返回初始位置
+	            li.onmouseout = function () {
+	                end = beginX;
+	            }
+
+			}
+
+			// 定义缓动动画
+			var begin = 0; end = 0;
+			setInterval(function () {
+				begin += (end - begin) * 0.2;
+				$("pic").style.left = begin + "px";
+			}, 20)
+		};
+
+		function $ (id) {
+			return typeof id === "string" ? document.getElementById(id):null; 
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>进度条特效</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		#progess{
+			width: 800px;
+			height: 50px;
+			/*background-color: red;*/
+			margin:80px auto;
+			position: relative;
+		}
+		#progess_bar{
+			width: 750px;
+			height: 50px;
+			border-radius: 8px;
+			background-color: #d0d0d0;
+			position: relative;
+		}
+
+		#des{
+			width:0px;
+			height: 100%;
+			background-color: green;
+			border-top-left-radius: 8px;
+			border-bottom-left-radius: 8px;
+		}
+
+		#mask{
+			width:20px;
+			height: 60px;
+			background-color: green;
+			border-radius: 5px;
+			position: absolute;
+			top:-5px;
+			left: 0px;
+			cursor: pointer;
+		}
+
+		#value{
+			position: absolute;
+			right: 7px;
+			top: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div id="progess">
+		<div id="progess_bar">
+			<div id="des"></div>
+			<span id="mask"></span>
+		</div>
+		<div id="value">10%</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 获取需要的标签
+			// 2. 监听鼠标按下事件
+			$("mask").onmousedown = function (event) {
+				// 2.1 获取初始位置
+				var offsetLeft = event.clientX - $("mask").offsetLeft;
+				// 2.1 监听鼠标的移动
+				document.onmousemove = function (event) {
+					//  获取移动的位置
+					var pointX = event.clientX - offsetLeft;
+
+					// 边界值处理
+					if (pointX < 0) {
+						pointX = 0;
+					} else if(pointX > $("progess_bar").offsetWidth- $("mask").offsetWidth){
+						pointX = $("progess_bar").offsetWidth- $("mask").offsetWidth;
+					}
+
+					// 运动起来
+					$("mask").style.left = pointX + "px";
+					$("des").style.width = pointX + "px";
+					$("value").innerText = parseInt(pointX/($("progess_bar").offsetWidth- $("mask").offsetWidth)*100) + "%";
+					// 防止事件冲突,结束函数
+					return false;
+				}
+			}
+
+			// 3. 监听鼠标松开
+			document.onmouseup = function () {
+				document.onmousemove = null;
+			}
+		};
+		
+
+		function $ (id) {
+			return typeof id === "string" ? document.getElementById(id):null; 
+		}
+	</script>
+</body>
+</html>

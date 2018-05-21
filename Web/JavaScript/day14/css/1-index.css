@@ -1,0 +1,30 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+ul,ol{list-style-type: none;}
+
+body{
+	width: 100%;
+}
+
+#main{
+	position: relative;
+}
+
+.box{
+	padding:15px 0 0 15px;
+	float: left;
+}
+
+.box .pic{
+	padding:10px;
+	border:1px solid #ccc;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+.box .pic img{
+	width: 165px;
+}
+
+img{
+	vertical-align: top;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+	#top{
+		padding:10px;
+	}
+
+	#bottom{
+		position: relative;
+	}
+
+	#bottom .box{
+		width: 220px;
+		height: 360px;
+		background-color: #e8e8e8;
+	}
+
+	#bottom .box p:last-child{
+		color: red;
+		font-size: 13px;
+	}
+</style>
+<head>
+	<meta charset="UTF-8">
+	<title>九宫格练习</title>
+</head>
+<body>
+	<div id="top">
+		<button>3列</button>
+		<button>4列</button>
+		<button>5列 </button>
+	</div>
+	<div id="bottom">
+		<div class="box">
+            <img src="image/1.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/2.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/3.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/4.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/5.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/6.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/7.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/8.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/9.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/10.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/11.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/12.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/13.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/14.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="image/15.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+	</div>
+
+	<script type="text/javascript">
+		// 1. 获取所需要的标签
+		var btn = document.getElementsByTagName("button");
+		var bottom = document.getElementById("bottom");
+
+		// 2. 监听按钮点击事件
+		btn[0].onclick = function () {
+			box_flex(3,bottom);
+		}
+
+		btn[1].onclick = function () {
+			box_flex(4,bottom);
+		}
+
+		btn[2].onclick = function () {
+			box_flex(5,bottom);
+		}
+
+		function box_flex (cols,parrentNode) {
+			// 2.1 创建变量
+			var boxW = 220, boxH = 360, boxGap = 10;
+
+			// 2.2 遍历
+			for (var i = 0; i < parrentNode.children.length; i++) 
+				// 求出当前盒子所在行数与列数
+				var row = parseInt(i/cols);
+				var col = parseInt(i%cols);
+
+				// 盒子进行定位
+				var currentBox = parrentNode.children[i];
+				currentBox.style.position = 'absolute';
+				currentBox.style.left = col*(boxW+boxGap) + "px";
+				currentBox.style.top = row*(boxH+boxGap) + "px";
+			}
+		}
+	</script>
+</body>
+</html>

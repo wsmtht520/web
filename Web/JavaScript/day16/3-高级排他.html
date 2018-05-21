@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包:高级排他</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+		li{
+			width: 300px;
+			height: 50px;
+			border:1px solid black;
+			margin-bottom: 5px;
+		}
+		.current{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul id="ul">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script type="text/javascript">
+		window.onload = function () {
+			var lis = document.getElementsByTagName("li");
+			var lastOne = 0;
+			for (var i = 0; i < lis.length; i++) {
+				(function (index) {
+					lis[index].onmouseover = function () {
+						// 清除
+						lis[lastOne].className = "";
+						// 设置
+						this.className = "current";
+						// 赋值
+						lastOne = index;
+					}
+				})(i);
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		// 函数节流
+		/*var timer = null;
+		window.onresize = function () {
+			clearTimeout(timer);
+			timer = setTimeout(function () {
+				console.log("21345");
+			},400);
+		}*/
+		// 节流函数
+		function throttle (fn,delay) {
+			var timer = null;
+			return function () {
+				clearTimeout(timer);
+				timer = setTimeout(fn,delay);
+			}
+		}
+		window.onresize = throttle (function () {
+			console.log("11");
+		},400)
+	</script>
+</body>
+</html>

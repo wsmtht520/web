@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onresize家族</title>
+	<!-- 当窗口或者框架的大小发生改变时而调用 -->
+</head>
+<body>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+		// 当屏幕的宽度>=960时，页面的背景颜色为红色；当屏幕的宽度>=640时，页面的背景颜色为蓝色；当屏幕的宽度<640时，页面的背景颜色为绿色？
+		 changeColor(); //预加载
+		 /*console.log(changeColor);
+		 console.log(changeColor());*/
+		 window.onresize = changeColor; //调用函数名
+
+		 function changeColor () {
+		 	if (client().width >= 960) {
+		 		document.body.style.backgroundColor = 'red';
+		 	} else if(client().width >= 640){
+		 		document.body.style.backgroundColor = 'blue';
+		 	} else{
+		 		document.body.style.backgroundColor = 'green';
+		 	} 
+		 }
+		}
+		
+	</script>
+</body>
+</html>

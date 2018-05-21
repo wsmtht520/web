@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无限轮播</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		#slider{
+			width: 750px;
+			height: 320px;
+			margin:80px auto;
+			border:1px solid green;
+			position: relative;
+			padding: 10px;
+		}
+
+		#top{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+		}
+
+		#top #ul{
+			width: 4500px;
+			height: 320px;
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+
+		#top #ul>li{
+			float: left;
+		}
+
+		#bottom{
+			width: 175px;
+			height: 20px;
+			position: absolute;
+			right: 15px;
+			bottom: 10px;
+		}
+
+		#bottom #ol{
+			width: 175px;
+			height: 20px;
+		}
+
+		#bottom #ol>li{
+			float: left;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: #e8e8e8;
+			margin-left: 15px;
+			cursor: pointer;
+		}
+
+		#bottom #ol>li.current{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="slider">
+		<div id="top">
+			<ul id="ul">
+				<li><img src="images/pic01.jpg" alt=""></li>
+				<li><img src="images/pic02.jpg" alt=""></li>
+				<li><img src="images/pic03.jpg" alt=""></li>
+				<li><img src="images/pic04.jpg" alt=""></li>
+				<li><img src="images/pic05.jpg" alt=""></li>
+			</ul>
+		</div>
+		<div id="bottom">
+			<ol id="ol">
+			</ol>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			// 1. 获取需要的标签
+			var lis = $("ul").children;
+			var currentIndex = 0, indicatorIndex = 0;
+			// 2. 创建li标签
+			$("ul").appendChild(lis[0].cloneNode(true));
+
+			// 3. 动态创建页码
+			for (var i = 0; i < lis.length-1; i++) {
+				var li = document.createElement("li");
+				$("ol").appendChild(li);
+			};
+
+			// 4.第一个页码被选中
+			$("ol").children[0].className = "current";
+
+			// 5.鼠标进入圆点页码滚动图片
+			var olLis = $("ol").children;
+			for (var i = 0; i < olLis.length; i++) {
+				(function (i) {
+					// 5.1 获取单个li标签
+					var li = olLis[i];
+					li.onmouseover = function () {
+						// 排他思想
+						for (var j = 0; j < olLis.length;j++) {
+							olLis[j].className = "";
+						};
+
+						this.className = "current";
+
+						// 图片滚动
+						linear($("ul"),-(750*i),100);
+						// constant($("ul"),-(750*i),100);
+						currentIndex = indicatorIndex = i;
+					}				
+				})(i)
+			};
+
+			// 6.图片轮播
+			var timer = setInterval(autoPlay, 2000);
+
+			// 7.清除与设置定时器
+			$("slider").onmouseover = function () {
+				clearInterval(timer);
+			}
+
+			$("slider").onmouseout = function () {
+				timer = setInterval(autoPlay, 2000);
+			}
+
+			function autoPlay () {
+				// 6.1 ul图片滚动起来
+				currentIndex++;
+				// ****边界值处理
+				if (currentIndex > lis.length - 1) {
+					$("ul").style.left = 0;
+					currentIndex = 1;
+				} 
+				linear($("ul"),-750*currentIndex,100);
+				
+				// 6.2 下方指示索引滚动起来
+				indicatorIndex++;
+				if (indicatorIndex > olLis.length -1) {
+					indicatorIndex = 0;
+				}
+				for (var j = 0; j < olLis.length;j++) {
+							olLis[j].className = "";
+				};
+
+				olLis[indicatorIndex].className = "current";
+			}
+		}
+	</script>
+</body>
+</html>

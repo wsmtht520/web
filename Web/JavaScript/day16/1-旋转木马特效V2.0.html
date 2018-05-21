@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转木马特效</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+		img{
+			vertical-align: top
+		}
+		a{
+			text-decoration: none;
+			color: #fff;
+		}
+
+		body{
+			background-color: black;
+		}
+		#slider{
+			width: 1226px;
+			height: 460px;
+			margin:80px auto;
+			position: relative;
+			cursor: pointer;
+		}
+
+		#slider #slider_scroll{
+			width: 1226px;
+			height: 460px;
+		}
+
+		#slider #slider_scroll li{
+			position: absolute;
+			left: 0;
+			top: 0
+		}
+
+		#slider #slider_scroll li a img{
+			width: 100%;
+			height: 100%;
+		}
+
+		#slider_ctrl{
+			opacity: 0;
+		}
+
+		.slider_ctrl_prev,.slider_ctrl_next{
+			width: 76px;
+			height: 112px;
+			position: absolute;
+			top:50%;
+			margin-top: -56px;
+			z-index: 99;
+		}
+		.slider_ctrl_prev{
+			background: url(images/prev.png) no-repeat;
+			left: 10px;
+		}
+		.slider_ctrl_next{
+			background: url(images/next.png) no-repeat;
+			right: 10px;
+		}
+		#slider_dir{
+			width: 390px;
+			height: 60px;
+			position: absolute;
+			bottom:0;
+			left: 50%;
+			margin-left: -195px;
+		}
+		.slider-page{
+			display: inline-block;
+			width: 50px;
+			height: 20px;
+			margin-left: 20px;
+			margin-top: 20px;
+			border-radius: 8px;
+			background-color: silver;
+		}
+
+		.current{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="slider">
+		<div id="slider_scroll">
+			<ul id="slider_main">
+				<li><a href=""><img src="images/slidepic1.jpg"></a></li>
+				<li><a href=""><img src="images/slidepic2.jpg"></a></li>
+				<li><a href=""><img src="images/slidepic3.jpg"></a></li>
+				<li><a href=""><img src="images/slidepic4.jpg"></a></li>
+				<li><a href=""><img src="images/slidepic5.jpg"></a></li>
+			</ul>
+		</div>
+		<div id="slider_ctrl">
+			<span class="slider_ctrl_prev"></span>
+			<span class="slider_ctrl_next"></span>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1.获得所需要的标签
+			var slider = $("slider");
+			var slider_ctrl = $("slider_ctrl");
+			var slider_main = $("slider_main");
+			var lis = slider_main.children;
+			var slider_dir = $("slider_dir");
+
+			// 定义变量index，记录页码
+			var index = 0;
+
+			// 2.显示与隐藏指示器--清除与设置定时器
+			slider.onmouseover = function () {
+				buffer(slider_ctrl,{"opacity":1});
+				clearInterval(timer);
+			};
+			slider.onmouseout = function () {
+				buffer(slider_ctrl,{"opacity":0});
+				timer = setInterval(autoPlay, 2000);
+			};
+
+			// 3.定位
+			var json = [
+				{//第1个
+					width:400,
+					left:50,
+					top:20,
+					zIndex:2,
+					opacity:0.2
+				},
+				{//第2个
+					width:600,
+					left:0,
+					top:70,
+					zIndex:3,
+					opacity:0.8
+				},
+				{//第3个
+					width:800,
+					left:218,
+					top:100,
+					zIndex:4,
+					opacity:1
+				},
+				{//第4个
+					width:600,
+					left:626,
+					top:70,
+					zIndex:3,
+					opacity:0.8
+				},
+				{//第5个
+					width:400,
+					left:776,
+					top:20,
+					zIndex:2,
+					opacity:0.2
+				}
+			];
+			for (var i = 0; i < json.length; i++) { //将json中的属性值作用到每个元素上
+				buffer(lis[i],json[i]);
+			}
+			// 4.点击图片滚动
+			for (var j = 0; j < slider_ctrl.children.length; j++) {
+				var item = slider_ctrl.children[j];
+				console.log(item);
+				item.onmousedown = function () {
+					if (this.className === "slider_ctrl_prev") { //左边
+						json.push(json.shift());
+					}else{
+						json.unshift(json.pop());
+					}
+
+					// 重新动画
+					for (var i = 0; i < json.length; i++) { 
+						buffer(lis[i],json[i]);
+					}
+				}
+			}
+
+			// 5.图片自动播放
+			var timer = setInterval(autoPlay, 2000);
+
+			function autoPlay(){
+				json.unshift(json.pop());
+				for (var i = 0; i < json.length; i++) { 
+					buffer(lis[i],json[i]);
+				}
+			}
+
+			
+		}
+	</script>
+</body>
+</html>

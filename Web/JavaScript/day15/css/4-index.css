@@ -1,0 +1,81 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px
+}
+
+img{
+	vertical-align: top
+}
+
+.slider{
+	width: 310px;
+	height: 250px;
+	margin:100px auto;
+	position: relative;
+	overflow: hidden;
+}
+
+.slider .slider-scroll{
+	width:310px;
+	height: 220px;
+	position: relative;
+}
+
+.slider .slider-scroll .slider-main{
+	width: 620px;
+	height: 220px;
+}
+
+.slider .slider-scroll .slider-main .slider-main-img{
+	width: 310px;
+	height: 220px;
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.slider .slider-control{
+	cursor: pointer;
+}
+
+.slider-control-prev,.slider-control-next{
+	width: 20px;
+	height: 34px;
+	position: absolute;
+	background: url(../images/icon.png) no-repeat;
+	top:50%;
+	margin-top: -17px;
+}
+
+.slider-control-prev{
+	left: 5px;
+}
+
+.slider-control-next{
+	right: 5px;
+	background-position: -9px -45px;
+}
+
+#slider_control_page{
+	position: absolute;
+	bottom: 5px;
+	left:50%;
+	margin-left: -90px;
+}
+
+.slider-control-icon{
+	width: 24px;
+	height: 8px;
+	background-color: #d0d0d0;
+	display: inline-block;
+	margin-left: 8px;
+
+	text-indent: 20em;
+}
+
+.current{
+	background-color:blue;
+}

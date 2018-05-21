@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画封装</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			position: absolute;
+			left: 0;
+			top: 50px
+		}
+
+		#box2{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+			left: 600px;
+			top: 300px
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">向右运动</button>
+	<button id="btn2">向左运动</button>
+	<div id="box1"></div>
+	<div id="box2"></div>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<!-- <script type="text/javascript">
+		window.onload = function (event) {
+			// 监听鼠标点击事件
+			$("btn").onclick = function () {
+				linear($("box1"),501,20);
+			};
+
+			function linear (obj,target,speed) {
+				// 1. 清除定时器
+				clearInterval(obj.timer);
+
+				// 2. 判断方向
+				var direction = obj.offsetLeft < target ? -speed : speed;
+
+				// 3. 设置定时器
+				obj.timer = setInterval(function () {
+					obj.style.left = obj.offsetLeft + speed +"px";
+					// var abs = target - obj.offsetLeft; //偏差值
+					if (Math.abs(target - obj.offsetLeft) < Math.abs(direction)) {
+						clearInterval(obj.timer);
+						obj.style.left = target + "px";
+            			// console.log(obj.offsetLeft, target);
+					} 
+					// console.log(obj.offsetLeft );
+				}, 200)
+			}
+		}
+	</script> -->
+
+	<script type="text/javascript">
+		window.onload = function (event) {
+			$("btn1").onclick = function () {
+				linear($("box1"),800,60); //右走
+				linear($("box2"),100,60); //左走
+			};
+
+			$("btn2").onclick = function () {
+				// linear($("box1"),-100,-60); //左走
+				linear($("box1"),100,60); //左走
+				linear($("box2"),600,60); //右走
+			}
+		}
+	</script>
+</body>
+</html>

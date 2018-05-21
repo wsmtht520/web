@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>offset对象</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 170px;
+			background-color: red;
+			border:1px solid blue;
+			padding:10px;
+			margin:100px 0 0 100px;
+			position: relative;
+		}
+
+		#father{
+			width: 400px;
+			height: 280px;
+			background-color: red;
+			position: relative;
+			margin:80px 100px;
+		}
+
+		#son{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			/*position: absolute;
+			top: 60px;
+			left: 60px;*/
+
+			margin-left: 40px;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="box" style="width: 250px;height: 190px"></div> -->
+	<div id="grandpa" style="position: relative">
+		<div id="father">
+			<div id="son"></div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+		window.onload = function (event) {
+			/*
+			1. offsetWidth和offsetHeight用于获取元素的宽度与高度;而style.width和style.height只能用于行内的获取 
+			 */
+			var box = document.getElementById("box");
+			var father = document.getElementById("father");
+			var son = document.getElementById("son");
+			// 1. offsetWidth与offsetHeight
+			// console.log(box.offsetWidth+":"+box.offsetHeight);
+			// console.log(box.style.width+":"+box.style.height);
+			// console.log(box.offsetLeft);
+
+			// 2. offsetLeft与offsetTop用于获取距离第一个有进行定位设置的父级盒子的left与top距离
+			// console.log(son.offsetLeft);
+			console.log(son.offsetTop);
+
+			// 3. 找到有进行定位的父盒子
+			// console.log(son.offsetParent);
+
+			 /*
+		     a) style.left只能获取行内的，而offsetLeft则可以获取到所有的；
+		     b) offsetLeft 可以返回没有定位盒子距离左侧的位置；而style.left不可以，其只能返回有定位盒子的left;
+		     c) offsetLeft 返回的是数字，而 style.left 返回的是字符串，除了数字外还带有单位：px;
+		     注意：可以用parseInt进行转化；比如：styleLeft='300px' ---> parseInt(styleLft) ---> 300
+		     d) offsetLeft是只读的，而style.left是可读写；
+		     e) 如果没有给 当前 元素指定过 top 样式，则 style.top 返回的是空字符串。
+	    	*/
+
+		}
+	</script>
+</body>
+</html>

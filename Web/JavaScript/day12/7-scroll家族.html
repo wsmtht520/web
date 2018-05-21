@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scroll对象</title>
+	<style type="text/css">
+		body{
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		// console.log(document.documentElement.scrollTop+":"+document.documentElement.scrollLeft);
+		window.onscroll = function () {
+			console.log(document.documentElement.scrollTop+":"+document.documentElement.scrollLeft);
+			// console.log(document.body.scrollTop+":"+document.body.scrollLeft);
+		}
+	</script>
+
+	<script type="text/javascript">
+		window.onscroll = function () {
+			/*ie9+ 和 最新浏览器*/
+        	// console.log(window.pageXOffset, window.pageYOffset);
+        	// 火狐和其它liulanq
+        	// console.log(document.documentElement.scrollTop, document.documentElement.scrollLeft);
+        	// 谷歌及没有DTD声明
+      		// console.log(document.body.scrollTop, document.body.scrollLeft)
+      		
+      		var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      		var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+		}
+	</script>
+
+	<script type="text/javascript">
+		function scroll () {
+			if (window.pageYOffset !== null) {
+				return{
+					top: window.pageYOffset,
+					left: window.pageXOffset,
+				}
+			} else if(document.compatMode === "CSS1Compat"){ //W3C标准
+				return{
+					top: document.documentElement.scrollTop,
+					left: document.documentElement.scrollLeft,
+				}
+			}
+			return { //怪异模式
+	            top: document.body.scrollTop,
+	            left: document.body.scrollLeft
+        	}
+
+		}
+
+		window.onscroll = function(){
+			console.log(scroll().top);
+		}
+	</script>
+</body>
+</html>

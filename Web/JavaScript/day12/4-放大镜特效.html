@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜特效</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+		#box{
+			width: 350px;
+			height: 352px;
+			border:1px solid black;
+			margin:20px 0 0 200px;
+			position: relative;
+		}
+
+		#small_box{
+			position: relative;
+		}
+
+		#small_box img{
+			width: 350px;
+			height: 350px;
+		}
+
+		#mask{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			background-color: rgba(255,255,0,.4);
+			top:0;
+			left: 0;
+			cursor: move;
+
+			display: none;
+		}
+
+		#big_box{
+			position: absolute;
+			top:0;
+			left: 360px;
+			width: 600px;
+			height: 600px;
+			border:1px solid black;
+			display: none;
+			overflow: hidden;
+		}
+
+		#big_box img{
+			/*width: 600px;*/
+			position: absolute;
+		}
+
+		#ul {
+			width: 160px;
+			height: 50px;
+			margin:10px 0 0 200px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+
+		#ul li{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="small_box">
+			<img src="images/pic001.jpg" alt="">
+			<span id="mask"></span>
+		</div>
+		<div id="big_box">
+			<img src="images/pic01.jpg" alt="">
+		</div>
+	</div>
+	<ul id="ul">
+		<li><img src="images/pic0001.jpg" alt=""></li>
+		<li><img src="images/pic0002.jpg" alt=""></li>
+		<li><img src="images/pic0003.jpg" alt=""></li>
+	</ul>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			// 获取所需要的标签
+			var lis = $("ul").getElementsByTagName("img");
+			var big_img = $("big_box").children[0];
+			var small_img =$("small_box").children[0];
+
+			// 2. 监听鼠标进入小盒子
+			$("small_box").onmouseover = function () {
+				// 2.1 将隐藏的内容显示
+				$("big_box").style.display = 'block';
+				$("mask").style.display = 'block';
+
+				// 2.2 监听鼠标
+				$("small_box").onmousemove = function (event) {
+					// 求出鼠标位置当前坐标,这个是重点
+					var pointX = event.clientX - $("box").offsetLeft - $("mask").offsetWidth*0.5;
+					var pointY = event.clientY - $("box").offsetTop - $("mask").offsetHeight*0.5;
+					// var pointX = event.clientX - $("box").offsetLeft;
+					// var pointY = event.clientY - $("box").offsetTop;
+					// console.log(pointX);
+
+					// 边界值处理,将放大镜移动位置限制再小盒子内部
+					if (pointX <0 ) {
+						pointX = 0;
+					} else if(pointX > $("small_box").offsetWidth - $("mask").offsetWidth){
+						pointX = $("small_box").offsetWidth - $("mask").offsetWidth;
+					}
+
+					if (pointY <0 ) {
+						pointY = 0;
+					} else if(pointY > $("small_box").offsetHeight - $("mask").offsetHeight){
+						pointY = $("small_box").offsetHeight - $("mask").offsetHeight;
+					}
+
+					// 将坐标值赋给mask盒子,让放大镜移动起来
+					$("mask").style.left = pointX +"px";
+					$("mask").style.top = pointY +"px";
+
+					// 让大图动起来
+					big_img.style.left = - pointX/( $("small_box").offsetWidth/ $("big_box").offsetWidth) + "px";
+					// console.log(pointX/( $("small_box").offsetWidth/ $("big_box").offsetWidth));
+					big_img.style.top = - pointY/( $("small_box").offsetHeight/ $("big_box").offsetHeight) + "px";
+				}
+			}
+
+			// 3. 监听鼠标移出小盒子
+			$("small_box").onmouseout = function () {
+				$("big_box").style.display = 'none';
+				$("mask").style.display = 'none';
+			}
+
+			// 4. 图片切换
+			for (var i = 0; i < lis.length; i++) {
+				(function (i) {
+					var li = lis[i];
+					li.onmouseover = function () {
+						small_img.src = "images/pic00"+(i+1)+".jpg";
+						big_img.src = "images/pic0"+(i+1)+".jpg";
+					}
+				})(i);
+			}
+
+		};
+
+		function $ (id) {
+			return typeof id === "string" ? document.getElementById(id):null; 
+		}
+	</script>
+</body>
+</html>

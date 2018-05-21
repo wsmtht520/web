@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>缓动动画</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			position: absolute;
+			left: 0;
+			top: 50px
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">向右运动</button>
+	<button id="btn2">向左运动</button>
+	<div id="box1"></div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		window.onload = function (event) {
+			var timer = null;
+			$("btn1").onclick = function () {
+				buffer($("box1"),{"left":600,"top":300,"width":300,"height":300},function () {
+				buffer($("box1"),{"left":100,"top":50,"width":100,"height":100},function () {
+				buffer($("box1"),{"left":400,"top":250,"width":100,"backgroundColor":"blue"});
+			});
+			})// console.log(getStyleAttr($("box1"),"width"));
+			};
+
+			$("btn2").onclick = function () {
+				buffer($("box1"),{"left":100,"top":50,"width":100,"height":100});
+			};
+
+			function buffer (obj,json,fn) {
+				var begin = 0,speed = 0,target = 0;
+				// 1.清除定时器
+				clearInterval(obj.timer);
+
+				// 2.设置定时器
+				obj.timer = setInterval(function () {
+					// 旗帜,判断多值全部走完
+					var flag = true;
+					// 遍历json
+					for(var key in json){
+						// 2.0 获取初始值
+						begin = parseInt(getStyleAttr(obj,key)) || 0;
+						target = parseInt(json[key]);
+						// 2.1 求出步长
+						speed = ( target- begin)*0.2;
+						// 2.2 判断是否向上取整
+						speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+						// 2.3 动起来
+						obj.style[key] = begin + speed +"px";
+						// 2.4 判断
+						if (begin !== target) {
+							flag = false;
+						}
+					}
+
+					// 3.清除定时器
+					if(flag){
+						clearInterval(obj.timer);
+						console.log(fn);
+						// 判断是否回调
+						if (fn) {
+							fn();
+						}
+					}
+				}, 200)
+			}
+
+			function getStyleAttr(obj, attr) {
+		        if(obj.currentStyle){ // IE 和 opera
+		            return obj.currentStyle[attr];
+		        }else {
+		            return window.getComputedStyle(obj, null)[attr];
+		        }
+		    }
+
+		}
+	</script>
+</body>
+</html>

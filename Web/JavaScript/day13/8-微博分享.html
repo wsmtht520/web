@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取选中的内容</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		p{
+			width: 500px;
+			margin:0 auto;
+		}
+
+		div{
+			position: absolute;
+			width: 26px;
+			height: 26px;
+			background: url(images/share.gif) no-repeat;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p id="content">在新闻发生的第一时间，李克强就批示有关部门，要“以小窥大”，进一步考虑如何通过简政放权、放管结合、优化服务，破除制约社会生产力发展和就业创业的不合理束缚，以主动服务的精神激发市场活力。而11月21日在上海召开的座谈会上，总理再次通过两家小食店的故事“以小窥大”，点题下一阶段政府职能转变和深化“放管服”改革工作。李克强就批示有关部门，要“以小窥大”，进一步考虑如何通过简政放权、放管结合、优化服务，破除制约社会生产力发展和就业创业的不合理束缚，以主动服务的精神激发市场活力。而11月21日在上海召开的座谈会上，总理再次通过两家小食店的故事“以小窥大”，点题下一阶段政府职能转变和深化“放管服”改革工作。</p>
+	<div id="share_weibo"></div>
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			// 1. 监听鼠标抬起
+			$("content").onmouseup = function (event) {
+				var e = event || window.event;
+				// 1.1 获取选中的文字
+				var selectedText;
+				if (window.getSelection) { //标准模式,兼容选中的文字
+					selectedText = window.getSelection().toString();
+				} else { //IE系列
+					selectedText = document.selection.createRange().text;
+				};
+
+				// 1.2 判断是否有选中的文字内容
+				if (selectedText !== "") {
+					// 显示面板与文字
+					$("share_weibo").style.display = "block";
+
+					// 位置定位
+					$("share_weibo").style.left = e.clientX +"px";
+					$("share_weibo").style.top = e.clientY +"px";
+				} 
+			}
+
+			// 2. 监听文档的点击
+			document.onmousedown = function (event) {
+				var e = event || window.event;
+				// 2.1 获取点击区域的id
+				var targetID = e.target ? e.target.id : e.srcElement.id;
+
+				// 2.2 判断
+				if (targetID === "share_weibo") {
+					window.location.href = 'http://v.t.sina.com.cn/share/share.php?searchPic=false&title=' + selectedText + '&url=https://github.com/xuanzhihua';
+				} else {
+					$("share_weibo").style.display = "none";
+				};
+
+				// 2.3 防止拖动时选中内容
+				window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+			}
+		}
+	</script>
+</body>
+</html>

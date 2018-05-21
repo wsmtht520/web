@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蒙版效果</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+
+		body{
+			width: 100%;
+			height: 3000px;
+		}
+
+		#panel{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,60,255,.4);
+
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+
+		#login{
+			width: 300px;
+			height: 300px;
+			background-color: blue;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -150px;
+			margin-top: -150px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点击登录</button>
+	<div id="panel"></div>
+	<div id="login"></div>
+
+	<script type="text/javascript" src="js/myFunc.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			
+			// 1.监听鼠标点击事件
+			$("btn").onclick = function (event) {
+				// 1.0 阻止冒泡
+				if(event && event.stopPropagation){ // w3c标准
+            		event.stopPropagation();
+		        }else{ // IE系列 IE 678
+		            event.cancelBubble = true;
+		        }
+				// 1.1 显示蒙版与面板
+				$("panel").style.display = "block";
+				$("login").style.display = "block";
+
+				// 1.2 隐藏滚动条
+				document.body.style.overflow = 'hidden';
+			};
+
+			// 2. 监听文档点击
+			document.onclick = function (event) {
+				var e = event || window.event;
+				// 2.1 获取点击的便签
+				var targetId = e.target ? e.target.id: e.srcElement.id;
+				console.log(targetId); //获得的id名称,无需再通过document获取
+				
+				// 2.2 判断
+				if (targetId !== "login") {
+					// 隐藏蒙版与面板
+					$("panel").style.display = "none";
+					$("login").style.display = "none";
+					// 显示滚动条
+					document.body.style.overflow = 'auto';
+				} else {
+					alert("哈哈哈哈");
+					// window.location.href = "http://www.baidu.com";
+				}
+				
+			}
+		}
+	</script>
+</body>
+</html>
