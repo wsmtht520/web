@@ -1,0 +1,374 @@
+/***********************通用样式************************/
+body{
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#444;
+    background-color: #fff;
+}
+
+@font-face {
+    font-family: 'font-icon';
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/iconfont.woff') format('woff'),
+    url('../fonts/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+
+.lk-icon{
+    font-family: 'font-icon' !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#lk_about,#lk_hot,#lk_link{
+    padding:20px ;
+}
+
+#lk_about .title, #lk_hot .title, #lk_link .title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+}
+/***********************通用样式************************/
+
+/***********************头部样式************************/
+#header .top-bar{
+    height: 40px;
+    line-height: 39px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#header .top-bar .container .row div+div{
+    border-left: 1px solid #e0e0e0;
+}
+
+.icon-phone::before{
+    content: "\e63f";
+    font-size: 16px;
+}
+
+.icon-tel::before{
+    content: "\e63a";
+    font-size: 16px;
+}
+
+#header .top-bar .container .row .top-bar-1 a{
+    position: relative;
+}
+
+#header .top-bar .container .row .top-bar-1 a img{
+    position: absolute;
+    display: none;
+    left:50%;
+    margin-left: -65px;
+    margin-top: -10px;
+    z-index: 9999;
+}
+
+#header .top-bar .container .row .top-bar-1 a:hover img{
+    display: block;
+}
+
+#header .navbar-lk{
+    background-color: #fff;
+    margin-bottom: 0;
+}
+
+#header .navbar-lk .navbar-brand{
+    height: 70px;
+    padding:10px 15px;
+}
+
+#header .navbar-lk .navbar-nav a{
+    height: 70px;
+    line-height: 40px;
+}
+
+#header .navbar-lk .navbar-nav li.active a,
+#header .navbar-lk .navbar-nav li a:hover{
+    background-color: transparent;
+    border-bottom: 2px solid #1dd388;
+}
+
+#lk_header .navbar-lk .navbar-toggle {
+    margin-top: 18px;
+}
+/***********************头部样式************************/
+
+/***********************轮播图样式************************/
+#lk_carousel .carousel-inner .item{
+    background: no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+@media screen  and ( min-width: 800px){
+    #lk_carousel .item{
+        height: 410px;
+    }
+}
+/***********************轮播图样式************************/
+
+/***********************关于我们样式************************/
+#lk_about .row p{
+    line-height: 29px;
+    font-size: 15px;
+    margin:10px 0;
+}
+/***********************关于我们样式************************/
+
+/***********************产品介绍样式************************/
+#lk_product{
+    background-color: #e8e8e8;
+    padding:30px 0;
+}
+
+#lk_product .nav li a{
+    font-size: 16px;
+}
+
+#lk_product .nav li.active a{
+    border:none;
+    background-color: transparent;
+    border-bottom: 2px solid #0AB4F7;
+    color: #000;
+}
+
+#lk_product .tab-content{
+    padding:15px 0;
+}
+
+#lk_product .pd-left{
+    padding:40px 0;
+}
+
+#pd_one_1{
+    margin: 15px 0;
+}
+
+#pd_one_2{
+    background-color: transparent;
+}
+
+#pd_one_4{
+    margin: 15px 0;
+}
+
+#lk_product #pd_two_1{
+    padding: 100px 0;
+}
+
+#lk_product #pd_two_1 h1{
+    margin-bottom: 15px;
+}
+
+/***********************产品介绍样式************************/
+
+/***********************热门课程样式************************/
+#lk_hot .lesson{
+    padding:15px 10px;
+}
+
+#lk_hot .lesson .media-left{
+     width: 20%;
+}
+
+#lk_hot .lesson .media-body{
+    width: 60%;
+    vertical-align: middle;
+}
+
+#lk_hot .lesson .media-right{
+    width: 20%;
+    vertical-align: middle;
+    font-size: 16px;
+}
+/***********************热门课程样式************************/
+
+/***********************友情链接样式************************/
+#lk_link{
+    background-color: #e8e8e8;
+}
+#lk_link .logos{
+    text-align: center;
+}
+
+#lk_link .logos li{
+    display: inline-block;
+    padding: 20px 30px;
+}
+
+/***********************友情链接样式************************/
+
+/***********************尾部样式************************/
+#site-footer{
+    width: 100%;
+    height: 200px;
+    background: url("../images/ft_bg.png ") no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+
+    color: #fff;
+    font-size: 16px;
+}
+
+#site-footer .one,#site-footer .two{
+    height: 180px;
+    border-right:1px solid #666;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#site-footer .one li{
+    height: 40px;
+}
+
+#site-footer .one li a{
+    color: #fff;
+}
+
+#site-footer .two h5{
+    height: 30px;
+}
+
+#site-footer .three{
+    height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#site-footer .three h5{
+    margin-bottom: 10px;
+}
+
+#site-footer .three a{
+    margin-right: 15px;
+    text-decoration: none;
+}
+/***********************尾部样式************************/
+
+/***********************侧边栏样式************************/
+.index-lift{
+    position: fixed;
+    bottom: 32px;
+    right: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    width: 52px;
+
+    display: none;
+}
+
+.index-lift .button{
+    width: 52px;
+    height: 52px;
+    text-align: center;
+    font-size: 20px;
+    color:green;
+    letter-spacing: 1px;
+    position:relative;
+    overflow: hidden;
+    margin-top: 1px;
+    background-color: #444;
+}
+
+.index-lift .button .inner,.index-lift .button .outer{
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    top:0;
+    left:0;
+    transition:all 0.3s linear;
+    box-sizing: border-box;
+}
+
+.index-lift .button .inner{
+    width:52px;
+    height:52px;
+    padding:6px;
+    color:white;
+    background-color:#27CFC3;
+    font-size:15px;
+    top:52px;
+    box-sizing: border-box;
+}
+
+.index-lift .button .outer{
+    color:#AEE8E5;
+    line-height:52px;
+}
+
+.index-lift .button .icon-app{
+    background: url(../images/btn.png) no-repeat -156px 0;
+}
+
+.index-lift .button .icon-help{
+    background: url(../images/btn.png) no-repeat -104px 0;
+}
+
+.index-lift .button .icon-write{
+    background: url(../images/btn.png) no-repeat -208px 0;
+}
+.index-lift .button .icon-top{
+    background: url(../images/btn.png) no-repeat -52px 0;
+}
+
+.index-lift .button:hover .inner{
+    top:0;
+}
+
+.index-lift .button:hover .outer{
+    top:-52px;
+}
+
+.index-lift .code-wrapper{
+    position: relative;
+}
+
+.index-lift .code-wrapper .code-app{
+    width: 132px;
+    padding: 6px;
+    background-color: #fff;
+    position:absolute;
+    bottom:0;
+    left:-140px;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.2);
+    transform-origin:right bottom;
+    transform:scale(0);
+    transition:all 0.2s linear;
+}
+
+.index-lift .code-wrapper .code-app img{
+    width:120px;
+    height:120px;
+}
+
+.index-lift .code-wrapper .code-app a{
+    width: 100px;
+    height: 28px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    line-height: 28px;
+    border-radius: 3px;
+    background-color: #1dd388;
+    border-color: #1dd388;
+    position: relative;
+    top: 2px;
+    left:10px;
+}
+
+.index-lift .code-wrapper:hover .code-app{
+    transform:scale(1.0);
+}
+/***********************侧边栏样式************************/
