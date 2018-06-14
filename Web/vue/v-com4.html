@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>默认/具名插槽</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child>
+			<!-- <p>this is an apple</p> -->
+			<div class="header" slot="header">header</div>
+			<div class="footer" slot="footer">footer</div>
+		</child>
+	</div>
+
+	<template id="child">
+		<div>
+			<slot name="header"></slot>
+			<p>hello</p>
+			<slot name="footer"></slot>
+		</div>
+	</template>
+	<script type="text/javascript">
+		var child = {
+			template: "#child"
+		};
+		var vm = new Vue({
+			el: "#app",
+			components: {
+				child: child
+			}
+		})
+	</script>
+</body>
+</html>

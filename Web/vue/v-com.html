@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件使用过程中的注意点</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<counter :content="3" @change="handleChange" ref="one"></counter>
+		<counter :content="2" @change="handleChange" ref="two"></counter>
+		<h2>{{total}}</h2>
+	</div>
+	<script>
+		Vue.component("counter",{
+			props: ['content'],
+			data: function () {
+				return {
+					number: this.content
+				}
+			},
+			template: "<h2 @click='handleClick'>{{number}}</h2>",
+			methods: {
+				handleClick: function () {
+					this.number = this.number + 2;
+					this.$emit("change",2)
+				}
+			}
+		})
+
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				total: 5
+			},
+			methods: {
+				handleChange: function () {
+					this.total = this.$refs.one.number + this.$refs.two.number
+				}
+			}
+		})
+	</script>
+</body>
+</html>

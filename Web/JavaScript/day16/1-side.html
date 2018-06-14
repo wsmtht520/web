@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>侧边栏效果</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+			color: green;
+		}
+		
+		.clear-fix{
+			*zoom:1;
+		}
+		.clear-fix::after{
+			content: "";
+			display: block;
+			height: 0;
+			font-size: 0;
+			overflow: hidden;
+		}
+
+		.index-lift{
+			position: fixed;
+			bottom: 52px;
+			right: 52px;
+			cursor: pointer;
+			z-index: 99;
+			width: 52px;
+		}
+
+		.index-lift .button{
+			width: 52px;
+			height: 52px;
+			text-align: center;
+			font-size: 20px;
+			color:green;
+			letter-spacing: 1px;
+			position:relative;
+			overflow: hidden;
+			margin-top: 1px;
+			background-color: #444;
+		}
+
+		.index-lift .button .inner,.index-lift .button .outer{
+			width: 52px;
+			height: 52px;
+			position: absolute;
+			top:0;
+			left:0;
+			transition:all 0.3s linear;
+		}
+
+		.index-lift .button .inner{
+			width:52px;
+		    height:52px;
+		    padding:6px;
+		    color:white;
+		    background-color:#27CFC3;
+		    font-size:15px;
+		    top:52px;
+		    box-sizing: border-box;
+		}
+
+		.index-lift .button .outer{
+			color:#AEE8E5;
+		    line-height:52px;
+		}
+
+		.index-lift .button .icon-app{
+			background: url(images/btn.png) no-repeat -156px 0;
+		}
+
+		.index-lift .button .icon-help{
+			background: url(images/btn.png) no-repeat -104px 0;
+		}
+
+		.index-lift .button .icon-write{
+			background: url(images/btn.png) no-repeat -208px 0;
+		}
+		.index-lift .button .icon-top{
+			background: url(images/btn.png) no-repeat -52px 0;
+		}
+
+		.index-lift .button:hover .inner{
+			top:0;
+		}
+
+		.index-lift .button:hover .outer{
+			top:-52px;
+		}
+
+		.index-lift .code-wrapper{
+			position: relative;
+		}
+
+		.index-lift .code-wrapper .code-app{
+		    position:absolute;
+		    bottom:0;
+		    left:-136px;
+		    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.2);
+		    transform-origin:right bottom;
+		    transform:scale(0);
+		    transition:all 0.2s linear;
+		}
+
+		.index-lift .code-wrapper .code-app img{
+		    width:120px;
+		    height:120px;
+		}
+
+		.index-lift .code-wrapper:hover .code-app{
+		    transform:scale(1.0);
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="index_lift" class="index-lift clear-fix" style="display: block;">
+		<div class="code-wrapper">
+			<div class="button code">
+				<div class="inner">扫码直播</div>
+				<div class="outer icon-app"></div>
+			</div>
+			<div class="code-app">
+				<img src="images/code.png" alt="下载熊猫APP">
+			</div>
+		</div>
+		<div class="button help">
+			<a href="#">
+				<div class="inner">帮助中心</div>
+				<div class="outer icon-help"></div>
+			</a>
+		</div>
+		<div class="button comment">
+			<a href="#">
+				<div class="inner">评论中心</div>
+				<div class="outer icon-write"></div>
+			</a>
+		</div>
+		<div class="button toTop">
+			<a href="#">
+				<div class="inner">回到顶部</div>
+				<div class="outer icon-top"></div>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

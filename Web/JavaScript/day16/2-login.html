@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录及注册面板</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+		ul,ol{list-style-type: none;}
+		a{
+			text-decoration: none;
+			color: green;
+		}
+		#ruc-dialog-container{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			background-color: rgba(0,0,0,.5);
+			box-sizing: border-box;
+			z-index: 999;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper{
+			width: 400px;
+			height: 330px;
+			background-color: #fff;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -200px;
+			margin-top: -229px;
+			border-radius: 5px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-header{
+			width: 100%;
+			height: 3pc;
+			border-bottom: 1px solid #eee;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-header .ruc-tab{
+			float: left;
+			width: 175px;
+			height: 47px;
+			font-size: 1pc;
+			color: #333;
+			text-align: center;
+			line-height: 47px;
+			margin-left: 25px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-header .ruc-tab.selected{
+			cursor: pointer;
+			color:#1dd388;
+			border-bottom: 2px solid #1dd388;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-header .close{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: url(images/close.png) no-repeat;
+			cursor: pointer;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content{
+			position: relative;
+			padding: 0 26px;
+			color:#bebebe;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container{
+			margin-top: 7px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item{
+			box-sizing: border-box;
+			position: relative;
+			text-align: left;
+			margin-top: 11px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .input-box{
+			border:1px solid #d8d8d8;
+			border-radius: 3px;
+			height: 42px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-icon{
+			float: left;
+			width: 44px;
+			height: 40px;
+			background: #f9f9f9;
+			border-right: 1px solid #d8d8d8;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-icon i{
+			width: 2pc;
+			height: 2pc;
+			display: block;
+			background: url(images/item.png)  no-repeat;
+			margin:5px auto;
+			cursor: pointer;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .icon-phone i{
+			background-position: 5px -50px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .icon-auth i{
+			background-position: -4pc -50px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .icon-name i{
+			background-position: -75pt -50px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .icon-pwd i{
+			background-position: -28px -50px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-inner-box{
+			float: left;
+			height: 40px;
+			width: 300px;
+		}
+		
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item input{
+			padding:5px;
+			color: #333;
+			outline: 0;
+			box-sizing: border-box;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-phone-box>span{
+			float: left;
+			font-size: 15px;
+			color: #343434;
+			height: 40px;
+			line-height: 42px;
+			margin-left: 8px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-phone-box .phone{
+			height: 40px;
+			width: 180px;
+			border:none;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-phone-box .phone-country{
+			float: right;
+			width: 70px;
+			height: 42px;
+			line-height: 40px;
+			cursor: pointer;
+			color:#333;
+			background: url(images/select.png) no-repeat 50px 14px;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-phone-box .phone-country .country-text{
+			display: inline-block;
+			width: 50px;
+			font-size: 14px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-inner-box .auth{
+			height: 40px;
+			width: 180px;
+			border:none;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-auth-box a{
+			float: right;
+			width: 80px;
+			height: 40px;
+			text-align: center;
+			line-height: 42px;
+			border:1px solid #ccc;
+			border-radius: 5px;
+			background-color: #1dd388;
+			font-size: 14px;
+			color: #fff;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .auth-tip{
+			text-align: right;
+			color: #1cd39b;
+			height: 21px;
+			width: 100%;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-inner-box .register-name{
+			height: 40px;
+			width: 180px;
+			border:none;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .form-item .input-inner-box .pwd{
+			height: 40px;
+			width: 180px;
+			border:none;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .agreement-container{
+			width: 100%;
+			height: 21px;
+			margin:11px 0;
+			color:#333;
+			line-height: 21px;
+			font-size: 13px;
+			text-align: center;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .agreement-container .agreement-link{
+			color:#1dd388;
+		}
+
+		#ruc-dialog-container .ruc-dialog-wrapper .ruc-dialog-content .ruc-register-container .register-button-container {
+		    margin-top: 0;
+		    margin-bottom: 3px;
+		    z-index: 5;
+		    width: 348px;
+		    height: 42px;
+		    color: #fff;
+		    font-size: 18px;
+		    text-align: center;
+		    line-height: 42px;
+		    background-color: #1dd388;
+		    cursor: pointer;
+		    border-radius: 20px;
+		    box-shadow: 0 3px 6px 0 hsla(0,0%,56%,.29);
+		}
+
+		.ruc-dialog-footer {
+		    height: 48px;
+		    padding: 18px 0;
+		    background: #f5f4f2;
+		}
+
+		.ruc-dialog-footer .footer-wrap{
+			text-align: center;
+		}
+
+		.ruc-dialog-footer .footer-wrap span {
+		    display: inline-block;
+		    vertical-align: top;
+		    margin: 7px 0;
+		    color: #828282;
+		    font-size: 13px;
+		}
+
+		.ruc-dialog-footer .footer-wrap ul{
+			display: inline-block;
+		}
+
+		.ruc-dialog-footer .footer-wrap ul li{
+			vertical-align: top;
+			margin-left: 16px;
+			display: inline-block;
+		}
+
+		.ruc-dialog-footer .footer-wrap ul li a{
+			background: url(images/item.png) no-repeat;
+			width: 2pc;
+			height: 2pc;
+			display: inline-block;
+		}
+
+		.ruc-dialog-footer .footer-wrap ul li:nth-child(1) a{
+			background-position: 0 0;
+		}
+
+		.ruc-dialog-footer .footer-wrap ul li:nth-child(2) a{
+			background-position: -46px 0;
+		}
+
+		.ruc-dialog-footer .footer-wrap ul li:nth-child(3) a{
+			background-position: -92px 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="ruc-dialog-container" style="display: block;">
+		<div class="ruc-dialog-wrapper" style="height: 458px;">
+			<div class="ruc-dialog-header">
+				<a href="" class="ruc-tab goto-normallogin-btn ">登录</a>
+				<a href="" class="ruc-tab goto-register-btn selected">注册</a>
+				<div class="close"></div>
+			</div>
+			<div class="ruc-dialog-content">
+				<div class="ruc-register-container">
+					<div class="form-item input-box">
+						<span class="input-icon icon-phone"><i></i></span>
+						<div class="input-inner-box input-phone-box">
+							<span>+86</span>
+							<input type="text" placeholder="请输入手机号" class="phone" maxlength="6">
+							<div class="phone-country">
+								<span class="country-text">中国大陆</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-item input-box">
+						<span class="input-icon icon-auth"><i></i></span>
+						<div class="input-inner-box input-auth-box">
+							<input type="text" placeholder="验证码" class="auth">
+							<a href="">获取验证码</a>
+							<!-- <div class="error-text">验证码输入错误</div> -->
+						</div>
+					</div>
+
+					<div class="auth-tip"></div>
+
+					<div class="form-item input-box">
+						<span class="input-icon icon-name"><i></i></span>
+						<div class="input-inner-box input-name-box">
+							<input type="text" placeholder="昵称" class="register-name">
+							<!-- <div class="error-text">验证码输入错误</div> -->
+						</div>
+					</div>
+
+					<div class="form-item input-box">
+						<span class="input-icon icon-pwd"><i></i></span>
+						<div class="input-inner-box input-pwd-box">
+							<input type="text" placeholder="密码" class="pwd">
+							<!-- <div class="error-text">验证码输入错误</div> -->
+						</div>
+					</div>
+
+					<div class="agreement-container">
+						<span class="agree-check"></span>
+						<label for="agreement" class="checkbox-label">
+							已阅读并同意
+							<a class="agreement-link" href="" >《熊猫直播用户协议》</a>和
+							<a class="agreement-link" href="" >《隐私政策》</a></label>
+					</div>
+
+					<div class="ruc-form-item button-container register-button-container">
+				        注册
+				    </div>
+				</div>
+			</div>
+			<div class="ruc-dialog-footer">
+				<div class="footer-wrap">
+					<span>社区账号登录</span>
+					<ul>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

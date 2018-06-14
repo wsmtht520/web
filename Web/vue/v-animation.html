@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue的过渡与动画效果展示</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" href="js/animate.css">
+	<style type="text/css">
+		/* .fade-enter,.fade-leave-to{
+			opacity:0;
+		}
+		
+		.fade-enter-active,.fade-leave-active{
+			transition: opacity 3s;
+		} */
+
+		/* .v-enter,.v-leave-to{
+			opacity:0;
+		}
+		
+		.v-enter-active,.v-leave-active{
+			transition: opacity 3s;
+		} */
+
+		/* @keyframes bounce-in{
+			0% {
+				transform: scale(0);
+			}
+			50% {
+				transform: scale(1.5);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+		
+		.active{
+			transform-origin: left center;
+			animation: bounce-in 1s;
+		}
+		
+		.leave{
+			transform-origin: left center;
+			animation: bounce-in 1s reverse;
+		} */
+	</style>
+</head>
+<body>
+	<div id="app">
+		<transition 
+					enter-active-class="animated rollIn"
+					leave-active-class="animated wobble"
+		>
+			<h2 v-if="show">Hello World</h2>
+		</transition>
+		<button @click="handleClick">toggle</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				show: true
+			},
+			methods: {
+				handleClick: function () {
+					this.show = !this.show
+				}
+			}
+		})
+	</script>
+</body>
+</html>

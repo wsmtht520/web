@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*自定义字体图标*/
+		@font-face
+		{
+			font-family: "font-icon";
+			src: url("font/iconfont.eot"); /* IE9 兼容模式 */
+			src: url("font/iconfont.eot?#iefix") format("embedded-opentype"),
+					url("font/iconfont.woff") format("woff"),
+					url("font/iconfont.ttf") format("truetype"),
+					url("font/iconfont.svg") format("svg");
+			font-weight: normal;
+			font-style: normal;
+		}
+		.lvye-icon
+		{
+			font-family: "font-icon";
+			font-style: normal;
+			font-weight: normal;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;	
+		}
+
+		/*清除浮动*/
+		.clearfix{*zoom:1;}
+		.clearfix::after
+		{
+		    clear:both;
+		    content:"";
+		    display:block;
+		    height:0;
+		    visibility:hidden;
+		}
+		/*外层*/
+		#back-to-top
+		{
+		    position:fixed;
+		    bottom:50px;
+		    right:36px;
+		    display:none;
+		    cursor:pointer;
+		}
+		/*回顶部内层公共样式*/
+		.rightBar
+		{
+		    width:46px;
+		    height:46px;
+		    text-align:center;
+		    font-size:30px;
+		    font-weight:bold;
+		    position:relative;
+		    overflow:hidden;
+		}
+		.rightBar .inner,.rightBar .outer
+		{
+		    position:absolute;
+		    top:0;
+		    left:0;
+		    width:46px;
+		    height:46px;
+		    transition:all 1s linear;
+		    -webkit-transition:all 0.15s linear;
+		    -moz-transition:all 0.15s linear;
+		    -ms-transition:all 0.15s linear;
+		}
+		.rightBar .outer
+		{
+		    color:#AEE8E5;
+		    background-color:#F7FBF9;
+		    line-height:46px;
+		}
+		.rightBar .inner
+		{
+		    width:40px;
+		    height:40px;
+		    line-height:20px;
+		    padding:3px;
+		    color:white;
+		    background-color:#27CFC3;
+		    font-size:15px;
+		    top:46px;
+		}
+		.rightBar:hover .outer{top:-46px;}
+		.rightBar:hover .inner{top:0;}
+		.forum,.answer,.toTop{margin-top:2px;}
+		/*捐赠*/
+		.donate-wrapper{position:relative;}
+		.alipay
+		{
+		    position:absolute;
+		    bottom:0;
+		    left:-136px;
+		    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.2);
+		    transform-origin:right bottom;
+		    -webkit-transform-origin:right bottom;
+		    -moz-transform-origin:right bottom;
+		    -ms-transform-origin:right bottom;
+		    transform:scale(0);
+		    -webkit-transform:scale(0);
+		    -moz-transform:scale(0);
+		    -ms-transform:scale(0);
+		    transition:all 0.2s linear;
+		    -webkit-transition:all 0.2s linear;
+		    -moz-transition:all 0.2s linear;
+		    -ms-transition:all 0.2s linear;
+		}
+		.alipay img
+		{
+		    width:120px;
+		    height:120px;
+		}
+		.donate-wrapper:hover .alipay
+		{
+		    transform:scale(1.0);
+		    -webkit-transform:scale(1.0);
+		    -moz-transform:scale(1.0);
+		}
+
+		.index-lift .code-btn .code-icon {
+		    overflow: hidden;
+		    width: 52px;
+		    height: 52px;
+		    border: 1px solid #fff;
+		    color: #fff;
+		    background-color: #fff;
+		    text-align: center;
+		    cursor: pointer;
+		}
+
+		.index-lift .button a {
+		    height: 52px;
+		    width: 52px;
+		    overflow: hidden;
+		    display: block;
+		    text-align: center;
+		    border: 1px solid #fff;
+		    letter-spacing: 1px;
+		    color: #fff;
+		    background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+		
+    <div id="back-to-top" style="display: block;">
+        <div class="donate-wrapper">
+            <div class="donate rightBar">
+                <div class="inner">支持绿叶</div>
+                <div class="outer"><i class="lvye-icon icon-heart"></i></div>
+            </div>
+            <div class="alipay">
+                <img src="../App_images/alipay.jpg" alt="捐赠绿叶学习网">
+            </div>
+        </div>
+        <div class="forum rightBar">
+            <a href="http://bbs.lvyestudy.com" target="_blank">
+                <div class="inner">论坛交流</div>
+                <div class="outer"><i class="lvye-icon icon-chat"></i></div>
+            </a>
+        </div>
+        <div class="answer rightBar">
+            <a href="#comment">
+                <div class="inner">评论一下</div>
+                <div class="outer"><i class="lvye-icon icon-write"></i></div>
+            </a>
+        </div>
+        <div class="toTop rightBar">
+            <div class="inner">回到顶部</div>
+            <div class="outer"><i class="lvye-icon icon-top"></i></div>
+        </div>
+    </div>
+
+
+
+    <div class="index-lift clearfix join-anchor">
+      <div class="button gotop-btn" style="display: none;">
+        <a href="javascript:;">
+        	<span class="icon"></span>
+        	<span class="text">回到顶部</span>
+        </a>
+      </div>
+      <div class="button help-btn">
+        <a href="/help" target="_blank">
+        	<span class="icon"></span>
+        	<span class="text">帮助中心</span>
+        </a>
+      </div>
+      <div class="button code-btn">
+        <div class="code-icon">
+        	<span class="icon"></span>
+        	<span class="text">扫码直播</span>
+        </div>
+        <div class="code">
+        	<img src=""><a href="" class="code-link">立即下载</a>
+        </div>
+      </div>
+      <div class="button service-btn">
+        <a href="" target="_blank">
+        	<span class="icon"></span>
+        	<span class="text">客服支持</span>
+        </a>
+      </div>
+      <div class="button anchor-btn">
+        <a href="/application" class="add-stars" target="_self">
+        	<div class="breathe">
+        		<div class="breathe-bg"></div>
+        		<i class="breathe-icon"></i>
+        	</div>
+        	<span class="icon"></span>
+        	<span class="text">我要<br>做主播</span>
+        </a>
+      </div>
+    </div>
+</body>
+</html>

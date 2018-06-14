@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue的基本命令</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<input type="text" v-model="todoValue">
+			<button @click="handelBtnClick">提交</button>
+		</div>
+		<ul>
+			<todo-item v-for="item in list"
+					   v-bind:content="item">
+			</todo-item>
+		</ul>
+	</div>
+	<script>
+		// Vue.component("TodoItem",{
+		// 	props: ["content"],
+		// 	template: "<li>{{content}}</li>"
+		// });
+		
+		var TodoItem = {
+			props: ["content"],
+			template: "<li>{{content}}</li>"
+		}
+
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				todoValue: "",
+				list: []
+			},
+			components: {
+				TodoItem: TodoItem
+			},
+			methods: {
+				handelBtnClick: function () {
+					this.list.push(this.todoValue)
+					this.todoValue = ""
+				}
+			}
+		})
+	</script>
+</body>
+</html>

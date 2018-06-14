@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>非父子组件通信: BUS/总线/发布订阅模式</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child content="child-one"></child>
+		<child content="child-two"></child>
+	</div>
+	<script type="text/javascript">
+		Vue.prototype.bus = new Vue();
+
+		Vue.component("child",{
+			props: ["content"],
+			data: function () {
+				return {
+					value: this.content
+				}
+			},
+			template: "<div @click='handleClick'>{{value}}</div>",
+			methods: {
+				handleClick: function () {
+					this.bus.$emit("change", this.value)
+				}
+			},
+			mounted: function () {
+				var this_ = this;
+				this.bus.$on("change",function(val) {
+					this_.value = val
+				})
+			}
+		});
+
+		var vm = new Vue({
+			el: "#app"
+		})
+	</script>
+</body>
+</html>

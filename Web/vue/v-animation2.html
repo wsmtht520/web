@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue的js钩子</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<transition name="fade"
+					appear
+					@before-enter="handleBeforeEnter"
+					@enter="handleEnter"
+					@after-enter="handleAfterEnter"
+		>
+			<h2 v-if="show">Hello World</h2>
+		</transition>
+		<button @click="handleClick">toggle</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				show: true
+			},
+			methods: {
+				handleClick: function () {
+					this.show = !this.show
+				},
+				handleBeforeEnter: function (el) {
+					el.style.color = "red"
+				},
+				handleEnter: function (el,done) {
+					setTimeout(() => {
+						el.style.color = "green";
+					}, 2000)
+
+					setTimeout(() => {
+						done()
+					},4000)
+				},
+				handleAfterEnter: function (el) {
+					console.log("动画执行完毕")
+					el.style.color = "#000"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

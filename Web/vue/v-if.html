@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染v-if,v-show</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="show">this is A</div>
+		<div v-else>this is C</div>
+		<div v-show="hidden">this is B</div>
+		<div v-if="show">
+			用户名：<input type="text" key='username'>
+		</div>
+		<div v-else>
+			邮箱：<input type="text" key='password'>
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				show: false,
+				hidden: true
+			},
+		})
+	</script>
+</body>
+</html>

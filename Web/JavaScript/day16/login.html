@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录面板</title>
+</head>
+<body>
+	<div id="ruc-dialog-container" class="ruc-dialog-el" style="display: block;">
+		<div class="ruc-dialog-wrap ruc-dialog-new-wrap" style="height: 458px;">
+		    <div class="ruc-dialog-header" data-pdt-block="ruc-header">
+		        <a href="javascript:;" class="ruc-tab goto-normallogin-btn">登录</a>
+		        <a href="javascript:;" class="ruc-tab goto-register-btn selected">注册</a>
+		        <div class="ruc-dialog-close">
+		            <a href="javascript:;"></a>
+		        </div>
+		    </div>
+
+	    	<div class="ruc-dialog-content">
+	    		<div class="ruc-register-container" data-pdt-block="ruc-register">
+	    			<input class="fix-chrome" type="password">
+
+				    <div class="ruc-form-item ruc-input-box clearfix">
+				        <span class="ruc-input-icon ruc-register-phone">
+				            <i></i>
+				        </span>
+
+				        <div class="ruc-input-phone-box">
+				            <span class="ruc-phone-forenum ruc-register-phone-forenum">+86</span>
+				            <input placeholder="输入手机号" class="ruc-input-name ruc-input-register-name" name="account" data-collect="phone" type="text">
+				            <div id="ruc-register-phone-country" class="ruc-phone-country">
+				                <span class="phone-country-text">
+				                    中国大陆
+				                </span>
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="ruc-form-item ruc-input-box">
+				        <span class="ruc-input-icon ruc-register-auth">
+				            <i></i>
+				        </span>
+				        <input placeholder="验证码" class="ruc-input-register-auth" name="auth" maxlength="6" data-collect="acode" type="text">
+				        <a href="javascript:;" class="ruc-send-auth-code-btn cn-click" data-collect="abtn">获取验证码</a>
+				        <div class="input-item-error-text ruc-error-auth"></div>
+				        <div class="ruc-regist-tips voice-authcode-tips">
+				            <span class="tips-ie8"></span>
+				            <span class="tips-triangle"></span>
+				            <span class="tips-dispatch-triangle"></span>
+				            <div class="tips-content auth-code">
+				                <p>请输入验证码</p>
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="ruc-regist-auth-tips"></div>
+				    <div class="ruc-form-item ruc-input-box ruc-register-name">
+				        <span class="ruc-input-icon ruc-register-name">
+				            <i></i>
+				        </span>
+				        <input placeholder="昵称" class="ruc-input-register-nickname" name="nickname" autocomplete="off" maxlength="16" data-collect="nickname" type="text">
+				        <i class="icon-ok"></i>
+				        <div class="input-item-error-text ruc-error-nickname"></div>
+				        <div class="ruc-regist-tips voice-authcode-tips">
+				            <span class="tips-ie8"></span>
+				            <span class="tips-triangle"></span>
+				            <span class="tips-dispatch-triangle"></span>
+				            <div class="tips-content">
+				                <p>注册后可使用改名卡修改</p>
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="ruc-form-item ruc-input-box">
+				        <span class="ruc-input-icon ruc-register-password">
+				            <i></i>
+				        </span>
+				        <input id="ruc-register-password-field" placeholder="密码" class="ruc-input-register-password" name="password" autocomplete="off" maxlength="16" data-collect="pwd" type="password">
+				        <i class="icon-ok"></i>
+				        <div class="input-item-error-text ruc-error-password"></div>
+				        <div class="ruc-regist-tips voice-authcode-tips">
+				            <span class="tips-ie8"></span>
+				            <span class="tips-triangle"></span>
+				            <span class="tips-dispatch-triangle"></span>
+				            <div class="tips-content">
+				                <p>密码长度为6~16位，可以是数字、字母等任意组合</p>
+				            </div>
+				        </div>
+				    </div>
+
+
+				    <div class="ruc-form-item agreement-container checked">
+				        <span class="chose-check-box agreement-checkbox">
+				            <i></i>
+				        </span>
+				        <label for="agreement" class="checkbox-label">已阅读并同意<a class="agreement-link" href="http://www.panda.tv/agreement.html" data-pdt-ele="0" target="_blank">《熊猫直播用户协议》</a>和<a class="agreement-link" href="https://www.panda.tv/ysxy.html" target="_blank" data-pdt-ele="1">《隐私政策》</a></label>
+				    </div>
+
+				    <div class="ruc-form-item button-container register-button-container">
+				        注册
+				    </div>
+
+				    <div id="ruc_error_common_msg" class="ruc-form-item common-error-msg-container"></div>
+				</div>
+			</div>
+			
+		    <div class="ruc-dialog-footer">
+		    	<div class="ruc-third-way-login">
+				    <span>社区账号登录</span>
+				    <ul class="ruc-third-way-list clearfix">
+				        <li class="third-way-list-item icon-use-qq ">
+				            <a class="ruc-use-qq" data-type="4" href="javascript:void(0);"></a>
+				        </li>
+				        <li class="third-way-list-item icon-use-wechat ">
+				            <a class="ruc-use-wechat" data-type="3" href="javascript:void(0);"></a>
+				        </li>
+				        <li class="third-way-list-item icon-use-weibo ">
+				            <a class="ruc-use-weibo" data-type="5" href="javascript:void(0);"></a>
+				        </li>
+				        <li class="third-way-list-item icon-use-fb forgin-login">
+				            <a class="ruc-use-fb" data-type="1" href="javascript:void(0);"></a>
+				        </li>
+				        <li class="third-way-list-item icon-use-twitter forgin-login">
+				            <a class="ruc-use-twitter" data-type="2" href="javascript:void(0);"></a>
+				        </li>
+				    </ul>
+				</div>
+			</div>
+
+		    <div class="ruc-dialog-verify-wrap">
+		        <a class="ruc-dialog-verify-close-btn" href="javascript:;"></a>
+		    </div>
+		</div>
+
+		<div class="ruc-dialog-tip">
+		  <div class="ruc-dialog-tip-overlay"></div>
+		  <div class="ruc-dialog-tip-msg"></div>
+		</div>
+	</div>
+</body>
+</html>
